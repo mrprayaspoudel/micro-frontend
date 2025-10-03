@@ -1,0 +1,1131 @@
+{
+  "crm": {
+    "moduleId": "crm",
+    "moduleName": "Customer Relationship Management",
+    "menus": [
+      {
+        "id": "dashboard",
+        "label": "Dashboard",
+        "path": "/",
+        "icon": "HomeIcon",
+        "requiredRole": "viewer",
+        "order": 1
+      },
+      {
+        "id": "customers",
+        "label": "Customer Management",
+        "icon": "UsersIcon",
+        "requiredRole": "viewer",
+        "order": 2,
+        "children": [
+          {
+            "id": "customer-list",
+            "label": "View Customers",
+            "path": "/customers",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "create-customer",
+            "label": "Create Customer", 
+            "path": "/customers/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "import-customers",
+            "label": "Import Customers",
+            "path": "/customers/import",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "customer-segments",
+            "label": "Customer Segments",
+            "path": "/customers/segments",
+            "requiredRole": "employee",
+            "order": 4
+          },
+          {
+            "id": "customer-analytics",
+            "label": "Customer Analytics",
+            "path": "/customers/analytics",
+            "requiredRole": "manager",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": "leads",
+        "label": "Lead Management",
+        "icon": "MagnifyingGlassIcon",
+        "requiredRole": "viewer",
+        "order": 3,
+        "children": [
+          {
+            "id": "leads-list",
+            "label": "View Leads",
+            "path": "/leads",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "create-lead",
+            "label": "Create Lead",
+            "path": "/leads/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "lead-scoring",
+            "label": "Lead Scoring",
+            "path": "/leads/scoring",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "lead-conversion",
+            "label": "Lead Conversion",
+            "path": "/leads/conversion",
+            "requiredRole": "employee",
+            "order": 4
+          },
+          {
+            "id": "lead-campaigns",
+            "label": "Marketing Campaigns",
+            "path": "/leads/campaigns",
+            "requiredRole": "supervisor",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": "opportunities",
+        "label": "Sales Pipeline",
+        "icon": "ChartBarIcon",
+        "requiredRole": "viewer",
+        "order": 4,
+        "children": [
+          {
+            "id": "opportunities-list",
+            "label": "View Opportunities",
+            "path": "/opportunities",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "create-opportunity",
+            "label": "Create Opportunity",
+            "path": "/opportunities/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "pipeline-management",
+            "label": "Pipeline Management",
+            "path": "/opportunities/pipeline",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "deal-forecasting",
+            "label": "Deal Forecasting",
+            "path": "/opportunities/forecasting",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "win-loss-analysis",
+            "label": "Win/Loss Analysis",
+            "path": "/opportunities/analysis",
+            "requiredRole": "manager",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "label": "Reports & Analytics",
+        "icon": "DocumentChartBarIcon",
+        "requiredRole": "employee",
+        "order": 5,
+        "children": [
+          {
+            "id": "sales-reports",
+            "label": "Sales Reports",
+            "path": "/reports/sales",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "performance-reports",
+            "label": "Performance Reports",
+            "path": "/reports/performance",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "revenue-analytics",
+            "label": "Revenue Analytics",
+            "path": "/reports/revenue",
+            "requiredRole": "manager",
+            "order": 3
+          },
+          {
+            "id": "custom-reports",
+            "label": "Custom Reports",
+            "path": "/reports/custom",
+            "requiredRole": "manager",
+            "order": 4
+          },
+          {
+            "id": "export-data",
+            "label": "Export Data",
+            "path": "/reports/export",
+            "requiredRole": "supervisor",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": "settings",
+        "label": "CRM Settings",
+        "icon": "CogIcon",
+        "requiredRole": "supervisor",
+        "order": 6,
+        "children": [
+          {
+            "id": "sales-process",
+            "label": "Sales Process Config",
+            "path": "/settings/process",
+            "requiredRole": "supervisor",
+            "order": 1
+          },
+          {
+            "id": "lead-sources",
+            "label": "Lead Sources",
+            "path": "/settings/sources",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "email-templates",
+            "label": "Email Templates",
+            "path": "/settings/templates",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "automation-rules",
+            "label": "Automation Rules",
+            "path": "/settings/automation",
+            "requiredRole": "manager",
+            "order": 4
+          },
+          {
+            "id": "integration-settings",
+            "label": "Integrations",
+            "path": "/settings/integrations",
+            "requiredRole": "admin",
+            "order": 5
+          }
+        ]
+      }
+    ]
+  },
+  "inventory": {
+    "moduleId": "inventory",
+    "moduleName": "Inventory Management",
+    "menus": [
+      {
+        "id": "dashboard",
+        "label": "Dashboard", 
+        "path": "/",
+        "icon": "HomeIcon",
+        "requiredRole": "viewer",
+        "order": 1
+      },
+      {
+        "id": "products",
+        "label": "Product Management",
+        "icon": "CubeIcon",
+        "requiredRole": "viewer",
+        "order": 2,
+        "children": [
+          {
+            "id": "products-list",
+            "label": "View Products",
+            "path": "/products",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "create-product",
+            "label": "Add Product",
+            "path": "/products/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "product-categories",
+            "label": "Categories",
+            "path": "/products/categories",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "product-attributes",
+            "label": "Product Attributes",
+            "path": "/products/attributes",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "bulk-import",
+            "label": "Bulk Import",
+            "path": "/products/import",
+            "requiredRole": "supervisor",
+            "order": 5
+          },
+          {
+            "id": "product-variants",
+            "label": "Product Variants",
+            "path": "/products/variants",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "stock",
+        "label": "Stock Management",
+        "icon": "ArchiveBoxIcon",
+        "requiredRole": "viewer",
+        "order": 3,
+        "children": [
+          {
+            "id": "stock-levels",
+            "label": "Stock Levels",
+            "path": "/stock",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "stock-adjustment",
+            "label": "Stock Adjustment",
+            "path": "/stock/adjustment",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "low-stock-alerts",
+            "label": "Low Stock Alerts",
+            "path": "/stock/alerts",
+            "requiredRole": "viewer",
+            "order": 3
+          },
+          {
+            "id": "stock-transfer",
+            "label": "Stock Transfer",
+            "path": "/stock/transfer",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "stock-audit",
+            "label": "Stock Audit",
+            "path": "/stock/audit",
+            "requiredRole": "supervisor",
+            "order": 5
+          },
+          {
+            "id": "reorder-points",
+            "label": "Reorder Points",
+            "path": "/stock/reorder",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "warehouses",
+        "label": "Warehouse Management",
+        "icon": "BuildingStorefrontIcon",
+        "requiredRole": "employee",
+        "order": 4,
+        "children": [
+          {
+            "id": "warehouses-list",
+            "label": "Warehouses",
+            "path": "/warehouses",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "warehouse-locations",
+            "label": "Storage Locations",
+            "path": "/warehouses/locations",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "warehouse-zones",
+            "label": "Warehouse Zones",
+            "path": "/warehouses/zones",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "receiving",
+            "label": "Receiving",
+            "path": "/warehouses/receiving",
+            "requiredRole": "employee",
+            "order": 4
+          },
+          {
+            "id": "picking",
+            "label": "Order Picking",
+            "path": "/warehouses/picking",
+            "requiredRole": "employee",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": "suppliers",
+        "label": "Supplier Management",
+        "icon": "TruckIcon",
+        "requiredRole": "employee",
+        "order": 5,
+        "children": [
+          {
+            "id": "suppliers-list",
+            "label": "Suppliers",
+            "path": "/suppliers",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "create-supplier",
+            "label": "Add Supplier",
+            "path": "/suppliers/create",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "supplier-contracts",
+            "label": "Contracts",
+            "path": "/suppliers/contracts",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "supplier-performance",
+            "label": "Performance",
+            "path": "/suppliers/performance",
+            "requiredRole": "manager",
+            "order": 4
+          },
+          {
+            "id": "purchase-orders",
+            "label": "Purchase Orders",
+            "path": "/suppliers/orders",
+            "requiredRole": "employee",
+            "order": 5
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "label": "Inventory Reports",
+        "icon": "DocumentChartBarIcon",
+        "requiredRole": "employee",
+        "order": 6,
+        "children": [
+          {
+            "id": "stock-reports",
+            "label": "Stock Reports",
+            "path": "/reports/stock",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "movement-reports",
+            "label": "Movement Reports",
+            "path": "/reports/movement",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "valuation-reports",
+            "label": "Valuation Reports",
+            "path": "/reports/valuation",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "abc-analysis",
+            "label": "ABC Analysis",
+            "path": "/reports/abc",
+            "requiredRole": "manager",
+            "order": 4
+          },
+          {
+            "id": "turnover-analysis",
+            "label": "Turnover Analysis",
+            "path": "/reports/turnover",
+            "requiredRole": "manager",
+            "order": 5
+          }
+        ]
+      }
+    ]
+  },
+  "hr": {
+    "moduleId": "hr",
+    "moduleName": "Human Resources",
+    "menus": [
+      {
+        "id": "dashboard",
+        "label": "Dashboard",
+        "path": "/",
+        "icon": "HomeIcon",
+        "requiredRole": "viewer",
+        "order": 1
+      },
+      {
+        "id": "employees",
+        "label": "Employee Management",
+        "icon": "UsersIcon",
+        "requiredRole": "viewer",
+        "order": 2,
+        "children": [
+          {
+            "id": "employees-list",
+            "label": "Employee Directory",
+            "path": "/employees",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "create-employee",
+            "label": "Add Employee",
+            "path": "/employees/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "employee-profiles",
+            "label": "Employee Profiles",
+            "path": "/employees/profiles",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "org-chart",
+            "label": "Organization Chart",
+            "path": "/employees/org-chart",
+            "requiredRole": "employee",
+            "order": 4
+          },
+          {
+            "id": "employee-documents",
+            "label": "Employee Documents",
+            "path": "/employees/documents",
+            "requiredRole": "supervisor",
+            "order": 5
+          },
+          {
+            "id": "emergency-contacts",
+            "label": "Emergency Contacts",
+            "path": "/employees/emergency",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "attendance",
+        "label": "Attendance & Time",
+        "icon": "ClockIcon",
+        "requiredRole": "viewer",
+        "order": 3,
+        "children": [
+          {
+            "id": "attendance-tracking",
+            "label": "Attendance Tracking",
+            "path": "/attendance",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "time-sheets",
+            "label": "Time Sheets",
+            "path": "/attendance/timesheets",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "work-schedules",
+            "label": "Work Schedules",
+            "path": "/attendance/schedules",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "overtime-management",
+            "label": "Overtime Management",
+            "path": "/attendance/overtime",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "attendance-reports",
+            "label": "Attendance Reports",
+            "path": "/attendance/reports",
+            "requiredRole": "employee",
+            "order": 5
+          },
+          {
+            "id": "time-off-requests",
+            "label": "Time Off Requests",
+            "path": "/attendance/time-off",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "label": "Leave Management",
+        "icon": "CalendarDaysIcon",
+        "requiredRole": "employee",
+        "order": 4,
+        "children": [
+          {
+            "id": "leave-requests",
+            "label": "Leave Requests",
+            "path": "/leave/requests",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "leave-approval",
+            "label": "Leave Approvals",
+            "path": "/leave/approvals",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "leave-calendar",
+            "label": "Leave Calendar",
+            "path": "/leave/calendar",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "leave-policies",
+            "label": "Leave Policies",
+            "path": "/leave/policies",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "holiday-calendar",
+            "label": "Holiday Calendar",
+            "path": "/leave/holidays",
+            "requiredRole": "employee",
+            "order": 5
+          },
+          {
+            "id": "leave-balance",
+            "label": "Leave Balance",
+            "path": "/leave/balance",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "payroll",
+        "label": "Payroll Management",
+        "icon": "CurrencyDollarIcon",
+        "requiredRole": "supervisor",
+        "order": 5,
+        "children": [
+          {
+            "id": "payroll-processing",
+            "label": "Payroll Processing",
+            "path": "/payroll/processing",
+            "requiredRole": "supervisor",
+            "order": 1
+          },
+          {
+            "id": "salary-structure",
+            "label": "Salary Structure",
+            "path": "/payroll/salary",
+            "requiredRole": "manager",
+            "order": 2
+          },
+          {
+            "id": "pay-slips",
+            "label": "Pay Slips",
+            "path": "/payroll/payslips",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "tax-management",
+            "label": "Tax Management",
+            "path": "/payroll/tax",
+            "requiredRole": "manager",
+            "order": 4
+          },
+          {
+            "id": "benefits-deductions",
+            "label": "Benefits & Deductions",
+            "path": "/payroll/benefits",
+            "requiredRole": "supervisor",
+            "order": 5
+          },
+          {
+            "id": "payroll-reports",
+            "label": "Payroll Reports",
+            "path": "/payroll/reports",
+            "requiredRole": "manager",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "performance",
+        "label": "Performance Management",
+        "icon": "ChartBarIcon",
+        "requiredRole": "employee",
+        "order": 6,
+        "children": [
+          {
+            "id": "performance-reviews",
+            "label": "Performance Reviews",
+            "path": "/performance/reviews",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "goal-setting",
+            "label": "Goal Setting",
+            "path": "/performance/goals",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "360-feedback",
+            "label": "360° Feedback",
+            "path": "/performance/feedback",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "performance-metrics",
+            "label": "Performance Metrics",
+            "path": "/performance/metrics",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "development-plans",
+            "label": "Development Plans",
+            "path": "/performance/development",
+            "requiredRole": "employee",
+            "order": 5
+          },
+          {
+            "id": "career-planning",
+            "label": "Career Planning",
+            "path": "/performance/career",
+            "requiredRole": "supervisor",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "recruitment",
+        "label": "Recruitment",
+        "icon": "UserPlusIcon",
+        "requiredRole": "supervisor",
+        "order": 7,
+        "children": [
+          {
+            "id": "job-postings",
+            "label": "Job Postings",
+            "path": "/recruitment/jobs",
+            "requiredRole": "supervisor",
+            "order": 1
+          },
+          {
+            "id": "applicant-tracking",
+            "label": "Applicant Tracking",
+            "path": "/recruitment/applicants",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "interview-scheduling",
+            "label": "Interview Scheduling",
+            "path": "/recruitment/interviews",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "candidate-assessment",
+            "label": "Candidate Assessment",
+            "path": "/recruitment/assessment",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "onboarding",
+            "label": "Onboarding",
+            "path": "/recruitment/onboarding",
+            "requiredRole": "supervisor",
+            "order": 5
+          },
+          {
+            "id": "recruitment-reports",
+            "label": "Recruitment Reports",
+            "path": "/recruitment/reports",
+            "requiredRole": "manager",
+            "order": 6
+          }
+        ]
+      }
+    ]
+  },
+  "finance": {
+    "moduleId": "finance",
+    "moduleName": "Finance Management",
+    "menus": [
+      {
+        "id": "dashboard",
+        "label": "Dashboard",
+        "path": "/",
+        "icon": "HomeIcon",
+        "requiredRole": "viewer",
+        "order": 1
+      },
+      {
+        "id": "accounts",
+        "label": "Account Management",
+        "icon": "BanknotesIcon",
+        "requiredRole": "viewer",
+        "order": 2,
+        "children": [
+          {
+            "id": "chart-of-accounts",
+            "label": "Chart of Accounts",
+            "path": "/accounts",
+            "requiredRole": "viewer",
+            "order": 1
+          },
+          {
+            "id": "create-account",
+            "label": "Create Account",
+            "path": "/accounts/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "account-reconciliation",
+            "label": "Account Reconciliation",
+            "path": "/accounts/reconciliation",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "bank-accounts",
+            "label": "Bank Accounts",
+            "path": "/accounts/banks",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "credit-cards",
+            "label": "Credit Cards",
+            "path": "/accounts/credit-cards",
+            "requiredRole": "supervisor",
+            "order": 5
+          },
+          {
+            "id": "cash-accounts",
+            "label": "Cash Accounts",
+            "path": "/accounts/cash",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "invoicing",
+        "label": "Invoicing & Billing",
+        "icon": "DocumentTextIcon",
+        "requiredRole": "employee",
+        "order": 3,
+        "children": [
+          {
+            "id": "invoices-list",
+            "label": "Invoices",
+            "path": "/invoices",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "create-invoice",
+            "label": "Create Invoice",
+            "path": "/invoices/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "recurring-invoices",
+            "label": "Recurring Invoices",
+            "path": "/invoices/recurring",
+            "requiredRole": "employee",
+            "order": 3
+          },
+          {
+            "id": "invoice-templates",
+            "label": "Invoice Templates",
+            "path": "/invoices/templates",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "payment-tracking",
+            "label": "Payment Tracking",
+            "path": "/invoices/payments",
+            "requiredRole": "employee",
+            "order": 5
+          },
+          {
+            "id": "credit-notes",
+            "label": "Credit Notes",
+            "path": "/invoices/credit-notes",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "expenses",
+        "label": "Expense Management",
+        "icon": "ReceiptPercentIcon",
+        "requiredRole": "employee",
+        "order": 4,
+        "children": [
+          {
+            "id": "expenses-list",
+            "label": "Expenses",
+            "path": "/expenses",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "create-expense",
+            "label": "Record Expense",
+            "path": "/expenses/create",
+            "requiredRole": "employee",
+            "order": 2
+          },
+          {
+            "id": "expense-categories",
+            "label": "Expense Categories",
+            "path": "/expenses/categories",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "expense-approval",
+            "label": "Expense Approval",
+            "path": "/expenses/approval",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "expense-reports",
+            "label": "Expense Reports",
+            "path": "/expenses/reports",
+            "requiredRole": "employee",
+            "order": 5
+          },
+          {
+            "id": "mileage-tracking",
+            "label": "Mileage Tracking",
+            "path": "/expenses/mileage",
+            "requiredRole": "employee",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "budgeting",
+        "label": "Budget Planning",
+        "icon": "CalculatorIcon",
+        "requiredRole": "supervisor",
+        "order": 5,
+        "children": [
+          {
+            "id": "budgets-list",
+            "label": "Budgets",
+            "path": "/budgets",
+            "requiredRole": "supervisor",
+            "order": 1
+          },
+          {
+            "id": "create-budget",
+            "label": "Create Budget",
+            "path": "/budgets/create",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "budget-vs-actual",
+            "label": "Budget vs Actual",
+            "path": "/budgets/comparison",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "budget-forecasting",
+            "label": "Budget Forecasting",
+            "path": "/budgets/forecasting",
+            "requiredRole": "manager",
+            "order": 4
+          },
+          {
+            "id": "cost-centers",
+            "label": "Cost Centers",
+            "path": "/budgets/cost-centers",
+            "requiredRole": "manager",
+            "order": 5
+          },
+          {
+            "id": "budget-approval",
+            "label": "Budget Approval",
+            "path": "/budgets/approval",
+            "requiredRole": "manager",
+            "order": 6
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "label": "Financial Reports",
+        "icon": "DocumentChartBarIcon",
+        "requiredRole": "employee",
+        "order": 6,
+        "children": [
+          {
+            "id": "profit-loss",
+            "label": "Profit & Loss",
+            "path": "/reports/profit-loss",
+            "requiredRole": "employee",
+            "order": 1
+          },
+          {
+            "id": "balance-sheet",
+            "label": "Balance Sheet",
+            "path": "/reports/balance-sheet",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "cash-flow",
+            "label": "Cash Flow Statement",
+            "path": "/reports/cash-flow",
+            "requiredRole": "supervisor",
+            "order": 3
+          },
+          {
+            "id": "trial-balance",
+            "label": "Trial Balance",
+            "path": "/reports/trial-balance",
+            "requiredRole": "employee",
+            "order": 4
+          },
+          {
+            "id": "aging-reports",
+            "label": "Aging Reports",
+            "path": "/reports/aging",
+            "requiredRole": "employee",
+            "order": 5
+          },
+          {
+            "id": "tax-reports",
+            "label": "Tax Reports",
+            "path": "/reports/tax",
+            "requiredRole": "manager",
+            "order": 6
+          },
+          {
+            "id": "custom-reports",
+            "label": "Custom Reports",
+            "path": "/reports/custom",
+            "requiredRole": "manager",
+            "order": 7
+          }
+        ]
+      },
+      {
+        "id": "settings",
+        "label": "Finance Settings",
+        "icon": "CogIcon",
+        "requiredRole": "supervisor",
+        "order": 7,
+        "children": [
+          {
+            "id": "company-settings",
+            "label": "Company Settings",
+            "path": "/settings/company",
+            "requiredRole": "manager",
+            "order": 1
+          },
+          {
+            "id": "currency-settings",
+            "label": "Currency Settings",
+            "path": "/settings/currency",
+            "requiredRole": "supervisor",
+            "order": 2
+          },
+          {
+            "id": "tax-settings",
+            "label": "Tax Settings",
+            "path": "/settings/tax",
+            "requiredRole": "manager",
+            "order": 3
+          },
+          {
+            "id": "payment-methods",
+            "label": "Payment Methods",
+            "path": "/settings/payment-methods",
+            "requiredRole": "supervisor",
+            "order": 4
+          },
+          {
+            "id": "fiscal-year",
+            "label": "Fiscal Year",
+            "path": "/settings/fiscal-year",
+            "requiredRole": "manager",
+            "order": 5
+          },
+          {
+            "id": "approval-workflows",
+            "label": "Approval Workflows",
+            "path": "/settings/workflows",
+            "requiredRole": "manager",
+            "order": 6
+          }
+        ]
+      }
+    ]
+  }
+}

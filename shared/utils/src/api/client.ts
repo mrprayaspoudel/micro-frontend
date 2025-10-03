@@ -54,9 +54,9 @@ export class MockApiService {
       case '/companies':
         return import('../../../../backends/companies.json').then(module => module.default) as Promise<T>;
       case '/users':
-        return import('../../../../backends/users.json').then(module => module.default) as Promise<T>;
+        return import('../../../../backends/user-permissions.json').then(module => module.default) as Promise<T>;
       case '/modules':
-        return import('../../../../backends/modules.json').then(module => module.default) as Promise<T>;
+        return import('../../../../backends/module-menus.json').then(module => module.default) as Promise<T>;
       case '/notifications':
         return import('../../../../backends/notifications.json').then(module => module.default) as Promise<T>;
       case '/knowledge-base':

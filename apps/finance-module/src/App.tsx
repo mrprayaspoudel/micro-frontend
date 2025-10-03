@@ -1,6 +1,6 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from '@shared/ui-components';
+import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
+import { ThemeProvider, MenuBar, SafeWrapper, StandaloneAuthProvider, useModuleAuth, StandaloneUserSwitcher } from '@shared/ui-components';
 import { financeTheme } from './theme';
 import Accounts from './pages/Accounts';
 import Invoices from './pages/Invoices';
@@ -15,25 +15,42 @@ const FinanceApp: React.FC<FinanceAppProps> = ({ basename }) => {
   const currentPort = window.location.port;
   const isStandalone = currentPort === '3004';
   
-  const AppContent = () => (
-    <ThemeProvider moduleTheme={financeTheme}>
-      <div className="finance-app">
-        <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="accounts" element={<Accounts />} />
-          <Route path="invoices" element={<Invoices />} />
-          <Route path="*" element={<Dashboard />} />
-        </Routes>
-      </div>
-    </ThemeProvider>
-  );
+  const AppContent = () => {
+    const location = useLocation();
+    const { user } = useModuleAuth();
+    
+    return (
+      <SafeWrapper fallback={<div>Loading Finance...</div>}>
+        <ThemeProvider moduleTheme={financeTheme}>
+        <div className="finance-app">
+          {user && (
+            <MenuBar 
+              userEmail={user.email} 
+              moduleId="finance" 
+              currentPath={location.pathname}
+            />
+          )}
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="accounts" element={<Accounts />} />
+            <Route path="invoices" element={<Invoices />} />
+            <Route path="*" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </ThemeProvider>
+      </SafeWrapper>
+    );
+  };
 
   // Use BrowserRouter with /finance basename when running standalone
   if (isStandalone) {
     return (
-      <BrowserRouter basename="/finance">
-        <AppContent />
-      </BrowserRouter>
+      <StandaloneAuthProvider>
+        <StandaloneUserSwitcher />
+        <BrowserRouter basename="/finance">
+          <AppContent />
+        </BrowserRouter>
+      </StandaloneAuthProvider>
     );
   }
 

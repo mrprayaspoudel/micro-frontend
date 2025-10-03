@@ -1,6 +1,6 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from '@shared/ui-components';
+import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
+import { ThemeProvider, MenuBar, SafeWrapper, StandaloneAuthProvider, useModuleAuth, StandaloneUserSwitcher } from '@shared/ui-components';
 import { hrTheme } from './theme';
 import EmployeeList from './pages/EmployeeList';
 import Attendance from './pages/Attendance';
@@ -15,25 +15,42 @@ const HRApp: React.FC<HRAppProps> = ({ basename }) => {
   const currentPort = window.location.port;
   const isStandalone = currentPort === '3003';
   
-  const AppContent = () => (
-    <ThemeProvider moduleTheme={hrTheme}>
-      <div className="hr-app">
-        <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="employees" element={<EmployeeList />} />
-          <Route path="attendance" element={<Attendance />} />
-          <Route path="*" element={<Dashboard />} />
-        </Routes>
-      </div>
-    </ThemeProvider>
-  );
+  const AppContent = () => {
+    const location = useLocation();
+    const { user } = useModuleAuth();
+    
+    return (
+      <SafeWrapper fallback={<div>Loading HR...</div>}>
+        <ThemeProvider moduleTheme={hrTheme}>
+        <div className="hr-app">
+          {user && (
+            <MenuBar 
+              userEmail={user.email} 
+              moduleId="hr" 
+              currentPath={location.pathname}
+            />
+          )}
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="employees" element={<EmployeeList />} />
+            <Route path="attendance" element={<Attendance />} />
+            <Route path="*" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </ThemeProvider>
+      </SafeWrapper>
+    );
+  };
 
   // Use BrowserRouter with /hr basename when running standalone
   if (isStandalone) {
     return (
-      <BrowserRouter basename="/hr">
-        <AppContent />
-      </BrowserRouter>
+      <StandaloneAuthProvider>
+        <StandaloneUserSwitcher />
+        <BrowserRouter basename="/hr">
+          <AppContent />
+        </BrowserRouter>
+      </StandaloneAuthProvider>
     );
   }
 

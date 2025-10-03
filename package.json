@@ -8,7 +8,8 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "./start-dev.sh",
+    "dev": "./setup.sh --start",
+    "setup": "./setup.sh",
     "start": "concurrently \"npm run start:host\" \"npm run start:crm\" \"npm run start:inventory\" \"npm run start:hr\" \"npm run start:finance\"",
     "start:host": "(cd host && npm run dev)",
     "start:crm": "(cd apps/crm-module && npm run preview)",

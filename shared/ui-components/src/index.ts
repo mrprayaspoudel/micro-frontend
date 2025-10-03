@@ -1,6 +1,10 @@
 export { Button } from './components/Button/Button';
 export { SearchInput } from './components/SearchInput/SearchInput';
 export { NotificationBadge } from './components/NotificationBadge/NotificationBadge';
+export { MenuBar } from './components/MenuBar';
 export { ThemeProvider, useTheme } from './theme/ThemeProvider';
+export { SafeWrapper } from './components/SafeWrapper';
+export { StandaloneAuthProvider, useStandaloneAuth, useModuleAuth } from './components/StandaloneAuth';
+export { StandaloneUserSwitcher } from './components/StandaloneUserSwitcher';
 export { defaultTheme } from './theme/defaultTheme';
 export type { Theme } from './types/theme';

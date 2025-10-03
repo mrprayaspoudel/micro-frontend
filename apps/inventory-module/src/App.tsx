@@ -1,6 +1,6 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from '@shared/ui-components';
+import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
+import { ThemeProvider, MenuBar, SafeWrapper, StandaloneAuthProvider, useModuleAuth, StandaloneUserSwitcher } from '@shared/ui-components';
 import { inventoryTheme } from './theme';
 import ProductList from './pages/ProductList';
 import StockManagement from './pages/StockManagement';
@@ -15,25 +15,42 @@ const InventoryApp: React.FC<InventoryAppProps> = ({ basename }) => {
   const currentPort = window.location.port;
   const isStandalone = currentPort === '3002';
   
-  const AppContent = () => (
-    <ThemeProvider moduleTheme={inventoryTheme}>
-      <div className="inventory-app">
-        <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="products" element={<ProductList />} />
-          <Route path="stock" element={<StockManagement />} />
-          <Route path="*" element={<Dashboard />} />
-        </Routes>
-      </div>
-    </ThemeProvider>
-  );
+  const AppContent = () => {
+    const location = useLocation();
+    const { user } = useModuleAuth();
+    
+    return (
+      <SafeWrapper fallback={<div>Loading Inventory...</div>}>
+        <ThemeProvider moduleTheme={inventoryTheme}>
+        <div className="inventory-app">
+          {user && (
+            <MenuBar 
+              userEmail={user.email} 
+              moduleId="inventory" 
+              currentPath={location.pathname}
+            />
+          )}
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="products" element={<ProductList />} />
+            <Route path="stock" element={<StockManagement />} />
+            <Route path="*" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </ThemeProvider>
+      </SafeWrapper>
+    );
+  };
 
   // Use BrowserRouter with /inventory basename when running standalone
   if (isStandalone) {
     return (
-      <BrowserRouter basename="/inventory">
-        <AppContent />
-      </BrowserRouter>
+      <StandaloneAuthProvider>
+        <StandaloneUserSwitcher />
+        <BrowserRouter basename="/inventory">
+          <AppContent />
+        </BrowserRouter>
+      </StandaloneAuthProvider>
     );
   }
 

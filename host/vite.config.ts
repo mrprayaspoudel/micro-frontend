@@ -14,7 +14,7 @@ export default defineConfig({
         'hr-app': 'http://localhost:3003/assets/remoteEntry.js',
         'finance-app': 'http://localhost:3004/assets/remoteEntry.js',
       },
-      shared: ['react', 'react-dom', 'react-router-dom', 'styled-components']
+      shared: ['react', 'react-dom', 'react-router-dom', 'styled-components', 'zustand']
     })
   ],
   build: {
