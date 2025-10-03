@@ -1,0 +1,13 @@
+{
+  "version": "7.1.1",
+  "npmClient": "npm",
+  "command": {
+    "publish": {
+      "conventionalCommits": true
+    },
+    "bootstrap": {
+      "ignore": "component-*",
+      "npmClientArgs": ["--no-package-lock"]
+    }
+  }
+}

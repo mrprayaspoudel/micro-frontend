@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "name": "TechCorp Solutions",
+    "email": "contact@techcorp.com",
+    "phone": "+1-555-0123",
+    "address": "123 Business Ave, Tech City, TC 12345",
+    "industry": "Technology",
+    "employees": 250,
+    "founded": "2015",
+    "website": "https://techcorp.com",
+    "description": "Leading technology solutions provider specializing in enterprise software development and digital transformation.",
+    "logo": "https://via.placeholder.com/150x150?text=TechCorp",
+    "status": "active",
+    "modules": ["crm", "inventory", "hr", "finance"],
+    "subscription": {
+      "plan": "enterprise",
+      "startDate": "2024-01-01",
+      "endDate": "2024-12-31",
+      "features": ["advanced-analytics", "custom-integrations", "priority-support"]
+    }
+  },
+  {
+    "id": "2",
+    "name": "Global Manufacturing Inc",
+    "email": "info@globalmanuf.com",
+    "phone": "+1-555-0456",
+    "address": "456 Industrial Blvd, Manufacturing City, MC 54321",
+    "industry": "Manufacturing",
+    "employees": 1200,
+    "founded": "2008",
+    "website": "https://globalmanuf.com",
+    "description": "International manufacturing company specializing in automotive parts and industrial equipment.",
+    "logo": "https://via.placeholder.com/150x150?text=GlobalMfg",
+    "status": "active",
+    "modules": ["inventory", "hr", "finance", "quality"],
+    "subscription": {
+      "plan": "professional",
+      "startDate": "2024-03-15",
+      "endDate": "2025-03-14",
+      "features": ["multi-location", "compliance-tracking"]
+    }
+  },
+  {
+    "id": "3",
+    "name": "HealthCare Plus",
+    "email": "admin@healthcareplus.com",
+    "phone": "+1-555-0789",
+    "address": "789 Medical Center Dr, Health City, HC 98765",
+    "industry": "Healthcare",
+    "employees": 500,
+    "founded": "2012",
+    "website": "https://healthcareplus.com",
+    "description": "Comprehensive healthcare services provider with multiple clinics and specialized medical centers.",
+    "logo": "https://via.placeholder.com/150x150?text=HealthCare+",
+    "status": "active",
+    "modules": ["hr", "finance", "patient-management"],
+    "subscription": {
+      "plan": "healthcare",
+      "startDate": "2024-02-01",
+      "endDate": "2025-01-31",
+      "features": ["hipaa-compliance", "patient-portal", "telemedicine"]
+    }
+  }
+]

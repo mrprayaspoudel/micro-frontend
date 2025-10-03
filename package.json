@@ -1,0 +1,49 @@
+{
+  "name": "@micro-frontend/root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "shared/*",
+    "host",
+    "apps/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "build:shared": "lerna run build --scope='@shared/*'",
+    "start": "lerna run start --parallel",
+    "start:host": "(cd host && npm run dev)",
+    "start:crm": "(cd apps/crm-module && npm run preview)",
+    "start:inventory": "(cd apps/inventory-module && npm run preview)",
+    "start:hr": "(cd apps/hr-module && npm run preview)",
+    "start:finance": "(cd apps/finance-module && npm run preview)",
+    "start:dev": "concurrently \"npm run start:host\" \"npm run start:crm\" \"npm run start:inventory\" \"npm run start:hr\" \"npm run start:finance\"",
+    "start:dev-built": "concurrently \"npm run start:host\" \"npm run start:crm\" \"npm run start:inventory\" \"npm run start:hr\" \"npm run start:finance\"",
+    "dev": "./start-dev.sh",
+    "health-check": "curl -s http://localhost:3001/assets/remoteEntry.js > /dev/null && curl -s http://localhost:3002/assets/remoteEntry.js > /dev/null && curl -s http://localhost:3003/assets/remoteEntry.js > /dev/null && curl -s http://localhost:3004/assets/remoteEntry.js > /dev/null && echo '✅ All micro frontends are healthy' || echo '❌ Some micro frontends are not responding'",
+    "check-ports": "lsof -i :3000,3001,3002,3003,3004 || echo 'All ports are available'",
+    "kill-dev-servers": "pkill -f 'vite.*--port.*300[0-4]' || echo 'No development servers found'",
+    "clean": "lerna clean",
+    "test": "lerna run test",
+    "lint": "lerna run lint"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/node": "^20.19.17",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "lerna": "^7.4.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

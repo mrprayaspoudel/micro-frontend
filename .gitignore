@@ -1,0 +1,247 @@
+# Node.js dependencies
+node_modules/
+*/node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+*/dist/
+*/build/
+**/dist/
+**/build/
+
+# Vite specific
+.vite/
+*/.vite/
+**/.vite/
+
+# Development cache
+.cache/
+*/.cache/
+**/.cache/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*/.env*
+**/.env*
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.tsbuildinfo
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output/
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.parcel-cache/
+
+# Next.js build output
+.next/
+out/
+
+# Nuxt.js build / generate output
+.nuxt/
+
+# Storybook build outputs
+.out/
+.storybook-out/
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+.temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local environment files
+.env*.local
+
+# Vercel deployment files
+.vercel/
+
+# Netlify deployment files
+.netlify/
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test/
+
+# Yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Local development files
+*.local
+.local/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Benchmark results
+benchmark/
+
+# Documentation build
+docs/build/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Lock files (comment out if you want to commit them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Micro frontend specific
+# Build artifacts from each module
+apps/*/dist/
+apps/*/build/
+host/dist/
+host/build/
+shared/*/dist/
+shared/*/build/
+
+# Module federation remoteEntry files in development
+**/remoteEntry.js
+**/remoteEntry.js.map
+
+# Development server files
+.vite-dev-server/
+
+# Preview build files
+preview-dist/
+
+# Hot reload cache
+.hot/
+
+# Lerna specific
+.lerna/
+lerna-debug.log
+
+# Debugging files
+debug/
+*.debug
+
+# Profiling files
+*.cpuprofile
+
+# Optional local development overrides
+local.config.js
+local.config.ts
+*.local.config.*
+
+# Auto-generated files
+auto-imports.d.ts
+components.d.ts
+
+# Build info
+.buildinfo
+
+# Temporary files created during build
+.temp-*
+temp-*

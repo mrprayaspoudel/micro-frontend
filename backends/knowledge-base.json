@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "Getting Started Guide",
+    "category": "General",
+    "description": "Learn how to navigate and use the platform effectively",
+    "content": "This comprehensive guide will help you get started with our platform...",
+    "tags": ["beginner", "navigation", "basics"],
+    "lastUpdated": "2024-01-10T00:00:00Z",
+    "author": "System Admin"
+  },
+  {
+    "id": "2",
+    "title": "CRM Module Documentation",
+    "category": "CRM",
+    "description": "Complete documentation for Customer Relationship Management features",
+    "content": "The CRM module provides comprehensive tools for managing customer relationships...",
+    "tags": ["crm", "customers", "sales"],
+    "lastUpdated": "2024-01-08T00:00:00Z",
+    "author": "CRM Team"
+  },
+  {
+    "id": "3",
+    "title": "Inventory Management Best Practices",
+    "category": "Inventory",
+    "description": "Best practices and tips for effective inventory management",
+    "content": "Effective inventory management is crucial for business success...",
+    "tags": ["inventory", "best-practices", "optimization"],
+    "lastUpdated": "2024-01-05T00:00:00Z",
+    "author": "Operations Team"
+  },
+  {
+    "id": "4",
+    "title": "Security Guidelines",
+    "category": "Security",
+    "description": "Important security guidelines and procedures",
+    "content": "Following security best practices is essential for protecting your data...",
+    "tags": ["security", "guidelines", "compliance"],
+    "lastUpdated": "2024-01-12T00:00:00Z",
+    "author": "Security Team"
+  }
+]
