@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@shared/ui-components';
 import { financeTheme } from './theme';
 import Accounts from './pages/Accounts';
@@ -28,16 +28,16 @@ const FinanceApp: React.FC<FinanceAppProps> = ({ basename }) => {
     </ThemeProvider>
   );
 
-  // Use BrowserRouter with root basename when running standalone
+  // Use BrowserRouter with /finance basename when running standalone
   if (isStandalone) {
     return (
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/finance">
         <AppContent />
       </BrowserRouter>
     );
   }
 
-  // When embedded in host, no router wrapper needed (host handles routing)
+  // When embedded in host, just return content (host router handles navigation)
   return <AppContent />;
 };
 

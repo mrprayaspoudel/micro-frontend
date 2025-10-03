@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@shared/ui-components';
 import { hrTheme } from './theme';
 import EmployeeList from './pages/EmployeeList';
@@ -28,16 +28,16 @@ const HRApp: React.FC<HRAppProps> = ({ basename }) => {
     </ThemeProvider>
   );
 
-  // Use BrowserRouter with root basename when running standalone
+  // Use BrowserRouter with /hr basename when running standalone
   if (isStandalone) {
     return (
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/hr">
         <AppContent />
       </BrowserRouter>
     );
   }
 
-  // When embedded in host, no router wrapper needed (host handles routing)
+  // When embedded in host, just return content (host router handles navigation)
   return <AppContent />;
 };
 

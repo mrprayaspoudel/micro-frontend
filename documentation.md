@@ -196,27 +196,66 @@ cd apps/finance-module && npm run dev
 
 ## 🛠️ Development Guide
 
-### Available Scripts
+### Development Workflow: From Setup to Production
 
+#### 1. **Initial Development Setup**
 ```bash
-# Start all applications in development mode
-npm run start:dev
-
-# Start only the host application
-npm run start:host
-
-# Start only micro frontend modules
-npm run start:modules
-
-# Build all applications
-npm run build
-
-# Run tests
-npm run test
-
-# Lint code
-npm run lint
+# Comprehensive startup with all checks and validations
+npm run dev
 ```
+This script automatically:
+- Checks and installs dependencies
+- Validates port availability (3000-3004)  
+- Bootstraps lerna packages
+- Builds shared packages
+- Starts all micro frontends
+
+#### 2. **Daily Development**
+```bash
+# Quick start for development (after initial setup)
+npm start
+```
+Starts all applications in parallel:
+- Host App: http://localhost:3000
+- CRM Module: http://localhost:3001/crm  
+- Inventory Module: http://localhost:3002/inventory
+- HR Module: http://localhost:3003/hr
+- Finance Module: http://localhost:3004/finance
+
+#### 3. **Individual Module Development**
+```bash
+npm run start:host          # Host app only (port 3000)
+npm run start:crm          # CRM module only (port 3001)
+npm run start:inventory    # Inventory module only (port 3002)
+npm run start:hr           # HR module only (port 3003)
+npm run start:finance      # Finance module only (port 3004)
+```
+
+#### 4. **Build Commands**
+```bash
+npm run build              # Build all packages for production
+npm run build:shared       # Build only shared packages
+```
+
+#### 5. **Testing & Quality Assurance**
+```bash
+npm test                   # Run tests across all packages
+npm run lint              # Run linting across all packages
+```
+
+#### 6. **Utility Commands**
+```bash
+npm run health-check       # Verify all micro frontends are accessible
+npm run check-ports        # Check if ports 3000-3004 are available
+npm run kill-servers       # Stop all running development servers  
+npm run clean             # Remove all node_modules directories
+```
+
+### Development Tips
+- **Always run `npm run health-check`** after starting servers to verify everything is working
+- **Use `npm run kill-servers`** to clean up if ports get stuck
+- **Individual modules can be developed independently** but require the host app for full federation testing
+- **Shared packages must be built** before micro frontends can use them
 
 ### 🧪 Testing the Platform
 

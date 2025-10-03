@@ -1,7 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from '@shared/ui-components';
+import { useModuleNavigate } from '@shared/utils';
 
 const PageContainer = styled.div`
   padding: ${props => props.theme.spacing.xl};
@@ -70,7 +70,7 @@ const ActionDescription = styled.p`
 `;
 
 const Dashboard: React.FC = () => {
-  const navigate = useNavigate();
+  const moduleNavigate = useModuleNavigate();
 
   const stats = [
     { number: '247', label: 'Total Customers' },
@@ -83,25 +83,25 @@ const Dashboard: React.FC = () => {
     {
       title: 'Customer Management',
       description: 'View and manage your customer database',
-      action: () => navigate('/customers'),
+      action: () => moduleNavigate('/customers'),
       buttonText: 'View Customers'
     },
     {
       title: 'Lead Tracking',
       description: 'Track and nurture your sales leads',
-      action: () => navigate('/leads'),
+      action: () => moduleNavigate('/leads'),
       buttonText: 'Manage Leads'
     },
     {
       title: 'Opportunities',
       description: 'Monitor sales opportunities and deals',
-      action: () => navigate('/opportunities'),
+      action: () => moduleNavigate('/opportunities'),
       buttonText: 'View Opportunities'
     },
     {
       title: 'Reports & Analytics',
       description: 'Generate insights from your CRM data',
-      action: () => navigate('/reports'),
+      action: () => moduleNavigate('/reports'),
       buttonText: 'View Reports'
     }
   ];

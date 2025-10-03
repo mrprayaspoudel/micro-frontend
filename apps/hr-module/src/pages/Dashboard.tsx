@@ -1,7 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from '@shared/ui-components';
+import { useModuleNavigate } from '@shared/utils';
 
 const PageContainer = styled.div`
   padding: ${props => props.theme.spacing.xl};
@@ -70,7 +70,7 @@ const ActionDescription = styled.p`
 `;
 
 const Dashboard: React.FC = () => {
-  const navigate = useNavigate();
+  const moduleNavigate = useModuleNavigate();
 
   const stats = [
     { number: '156', label: 'Total Employees' },
@@ -83,25 +83,25 @@ const Dashboard: React.FC = () => {
     {
       title: 'Employee Management',
       description: 'View and manage employee records',
-      action: () => navigate('/employees'),
+      action: () => moduleNavigate('/employees'),
       buttonText: 'View Employees'
     },
     {
       title: 'Attendance Tracking',
       description: 'Monitor attendance and time records',
-      action: () => navigate('/attendance'),
+      action: () => moduleNavigate('/attendance'),
       buttonText: 'Track Attendance'
     },
     {
       title: 'Performance Reviews',
       description: 'Manage employee performance evaluations',
-      action: () => navigate('/reviews'),
+      action: () => moduleNavigate('/reviews'),
       buttonText: 'View Reviews'
     },
     {
       title: 'Payroll Management',
       description: 'Process and manage employee payroll',
-      action: () => navigate('/payroll'),
+      action: () => moduleNavigate('/payroll'),
       buttonText: 'Manage Payroll'
     }
   ];

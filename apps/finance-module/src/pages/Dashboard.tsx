@@ -1,7 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from '@shared/ui-components';
+import { useModuleNavigate } from '@shared/utils';
 
 const PageContainer = styled.div`
   padding: ${props => props.theme.spacing.xl};
@@ -70,7 +70,7 @@ const ActionDescription = styled.p`
 `;
 
 const Dashboard: React.FC = () => {
-  const navigate = useNavigate();
+  const moduleNavigate = useModuleNavigate();
 
   const stats = [
     { number: '$2.4M', label: 'Total Revenue' },
@@ -83,25 +83,25 @@ const Dashboard: React.FC = () => {
     {
       title: 'Account Management',
       description: 'View and manage financial accounts',
-      action: () => navigate('/accounts'),
+      action: () => moduleNavigate('/accounts'),
       buttonText: 'View Accounts'
     },
     {
       title: 'Invoice Management',
       description: 'Create and track invoices',
-      action: () => navigate('/invoices'),
+      action: () => moduleNavigate('/invoices'),
       buttonText: 'Manage Invoices'
     },
     {
       title: 'Financial Reports',
       description: 'Generate financial reports and insights',
-      action: () => navigate('/reports'),
+      action: () => moduleNavigate('/reports'),
       buttonText: 'View Reports'
     },
     {
       title: 'Budget Planning',
       description: 'Plan and track budget allocations',
-      action: () => navigate('/budget'),
+      action: () => moduleNavigate('/budget'),
       buttonText: 'Manage Budget'
     }
   ];

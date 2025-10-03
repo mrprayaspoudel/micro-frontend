@@ -236,7 +236,7 @@ const Header: React.FC<HeaderProps> = ({ user, company, onSearch, onToggleSideba
         
         <NotificationBadge 
           count={unreadNotificationsCount}
-          onClick={() => console.log('Show notifications')}
+          onClick={() => {/* TODO: Implement notifications panel */}}
         />
         
         {user && (

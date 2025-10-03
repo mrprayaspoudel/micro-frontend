@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter, Navigate, MemoryRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@shared/ui-components';
 import { inventoryTheme } from './theme';
 import ProductList from './pages/ProductList';
@@ -28,16 +28,16 @@ const InventoryApp: React.FC<InventoryAppProps> = ({ basename }) => {
     </ThemeProvider>
   );
 
-  // Use BrowserRouter with root basename when running standalone
+  // Use BrowserRouter with /inventory basename when running standalone
   if (isStandalone) {
     return (
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/inventory">
         <AppContent />
       </BrowserRouter>
     );
   }
 
-  // When embedded in host, no router wrapper needed (host handles routing)
+  // When embedded in host, just return content (host router handles navigation)
   return <AppContent />;
 };
 

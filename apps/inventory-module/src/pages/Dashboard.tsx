@@ -1,7 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from '@shared/ui-components';
+import { useModuleNavigate } from '@shared/utils';
 
 const PageContainer = styled.div`
   padding: ${props => props.theme.spacing.xl};
@@ -70,7 +70,7 @@ const ActionDescription = styled.p`
 `;
 
 const Dashboard: React.FC = () => {
-  const navigate = useNavigate();
+  const moduleNavigate = useModuleNavigate();
 
   const stats = [
     { number: '1,247', label: 'Total Products' },
@@ -83,25 +83,25 @@ const Dashboard: React.FC = () => {
     {
       title: 'Product Management',
       description: 'View and manage product catalog',
-      action: () => navigate('/products'),
+      action: () => moduleNavigate('/products'),
       buttonText: 'View Products'
     },
     {
       title: 'Stock Management',
       description: 'Monitor and manage stock levels',
-      action: () => navigate('/stock'),
+      action: () => moduleNavigate('/stock'),
       buttonText: 'Manage Stock'
     },
     {
       title: 'Inventory Reports',
       description: 'Generate inventory analytics and reports',
-      action: () => navigate('/reports'),
+      action: () => moduleNavigate('/reports'),
       buttonText: 'View Reports'
     },
     {
       title: 'Purchase Orders',
       description: 'Create and track purchase orders',
-      action: () => navigate('/orders'),
+      action: () => moduleNavigate('/orders'),
       buttonText: 'Manage Orders'
     }
   ];
