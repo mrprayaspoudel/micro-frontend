@@ -12,9 +12,8 @@ interface FinanceAppProps {
 
 const FinanceApp: React.FC<FinanceAppProps> = ({ basename }) => {
   // Check if we're running as a standalone app or as a micro frontend
-  // When loaded via module federation from host, we should not use BrowserRouter
-  const isStandalone = window.location.port === '3004';
-  const isEmbedded = window.location.port === '3000' || basename !== undefined;
+  const currentPort = window.location.port;
+  const isStandalone = currentPort === '3004';
   
   const AppContent = () => (
     <ThemeProvider moduleTheme={financeTheme}>
@@ -23,22 +22,22 @@ const FinanceApp: React.FC<FinanceAppProps> = ({ basename }) => {
           <Route index element={<Dashboard />} />
           <Route path="accounts" element={<Accounts />} />
           <Route path="invoices" element={<Invoices />} />
-          <Route path="*" element={isStandalone ? <Navigate to="/finance" replace /> : <Dashboard />} />
+          <Route path="*" element={<Dashboard />} />
         </Routes>
       </div>
     </ThemeProvider>
   );
 
-  // Only use BrowserRouter when running standalone on port 3004
-  if (isStandalone && !isEmbedded) {
+  // Use BrowserRouter with root basename when running standalone
+  if (isStandalone) {
     return (
-      <BrowserRouter basename="/finance">
+      <BrowserRouter basename="/">
         <AppContent />
       </BrowserRouter>
     );
   }
 
-  // When embedded in host or running in preview mode for federation, no router wrapper needed
+  // When embedded in host, no router wrapper needed (host handles routing)
   return <AppContent />;
 };
 

@@ -12,9 +12,8 @@ interface HRAppProps {
 
 const HRApp: React.FC<HRAppProps> = ({ basename }) => {
   // Check if we're running as a standalone app or as a micro frontend
-  // When loaded via module federation from host, we should not use BrowserRouter
-  const isStandalone = window.location.port === '3003';
-  const isEmbedded = window.location.port === '3000' || basename !== undefined;
+  const currentPort = window.location.port;
+  const isStandalone = currentPort === '3003';
   
   const AppContent = () => (
     <ThemeProvider moduleTheme={hrTheme}>
@@ -23,22 +22,22 @@ const HRApp: React.FC<HRAppProps> = ({ basename }) => {
           <Route index element={<Dashboard />} />
           <Route path="employees" element={<EmployeeList />} />
           <Route path="attendance" element={<Attendance />} />
-          <Route path="*" element={isStandalone ? <Navigate to="/hr" replace /> : <Dashboard />} />
+          <Route path="*" element={<Dashboard />} />
         </Routes>
       </div>
     </ThemeProvider>
   );
 
-  // Only use BrowserRouter when running standalone on port 3003
-  if (isStandalone && !isEmbedded) {
+  // Use BrowserRouter with root basename when running standalone
+  if (isStandalone) {
     return (
-      <BrowserRouter basename="/hr">
+      <BrowserRouter basename="/">
         <AppContent />
       </BrowserRouter>
     );
   }
 
-  // When embedded in host or running in preview mode for federation, no router wrapper needed
+  // When embedded in host, no router wrapper needed (host handles routing)
   return <AppContent />;
 };
 

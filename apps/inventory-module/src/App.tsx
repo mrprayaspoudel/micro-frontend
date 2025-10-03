@@ -12,9 +12,8 @@ interface InventoryAppProps {
 
 const InventoryApp: React.FC<InventoryAppProps> = ({ basename }) => {
   // Check if we're running as a standalone app or as a micro frontend
-  // When loaded via module federation from host, we should not use BrowserRouter
-  const isStandalone = window.location.port === '3002';
-  const isEmbedded = window.location.port === '3000' || basename !== undefined;
+  const currentPort = window.location.port;
+  const isStandalone = currentPort === '3002';
   
   const AppContent = () => (
     <ThemeProvider moduleTheme={inventoryTheme}>
@@ -23,22 +22,22 @@ const InventoryApp: React.FC<InventoryAppProps> = ({ basename }) => {
           <Route index element={<Dashboard />} />
           <Route path="products" element={<ProductList />} />
           <Route path="stock" element={<StockManagement />} />
-          <Route path="*" element={isStandalone ? <Navigate to="/inventory" replace /> : <Dashboard />} />
+          <Route path="*" element={<Dashboard />} />
         </Routes>
       </div>
     </ThemeProvider>
   );
 
-  // Only use BrowserRouter when running standalone on port 3002
-  if (isStandalone && !isEmbedded) {
+  // Use BrowserRouter with root basename when running standalone
+  if (isStandalone) {
     return (
-      <BrowserRouter basename="/inventory">
+      <BrowserRouter basename="/">
         <AppContent />
       </BrowserRouter>
     );
   }
 
-  // When embedded in host or running in preview mode for federation, no router wrapper needed
+  // When embedded in host, no router wrapper needed (host handles routing)
   return <AppContent />;
 };
 
