@@ -86,16 +86,13 @@ const Dashboard: React.FC = () => {
 
   return (
     <PageContainer>
-      <WelcomeCard>
-        <h3>Welcome to the Enterprise Platform</h3>
-        <p>Manage your business operations across multiple modules from this unified dashboard.</p>
-        
-        {selectedCompany && (
+      {selectedCompany && (
+        <WelcomeCard>        
           <CompanyBadge>
-            Current Company: {selectedCompany.name}
-          </CompanyBadge>
-        )}
-      </WelcomeCard>
+              Current Company: {selectedCompany.name}
+            </CompanyBadge>
+        </WelcomeCard>
+      )}
       
       {selectedCompany ? (
         <StatsGrid>

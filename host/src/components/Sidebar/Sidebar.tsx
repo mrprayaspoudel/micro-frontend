@@ -131,12 +131,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, selectedCompany, onCompanySel
     navigate(`/company/${company.id}`);
   };
 
+  const handleCompanyReset = () => {
+    setSelectedCompany(null);
+    navigate('/dashboard');
+  };
+
   return (
     <SidebarContainer $isOpen={isOpen}>
       <SidebarContent>
         <CompanySearchSection 
           selectedCompany={selectedCompany}
           onCompanySelect={handleCompanySelect}
+          onCompanyReset={handleCompanyReset}
         />
         
         <SectionTitle>

@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Company } from '@shared/state';
 import { MockApiService } from '@shared/utils';
-import { MagnifyingGlassIcon, ChevronDownIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, ChevronDownIcon, BuildingOfficeIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useDropdownManager } from '../../hooks/useDropdownManager';
 
 interface CompanySearchSectionProps {
   selectedCompany: Company | null;
   onCompanySelect: (company: Company) => void;
+  onCompanyReset?: () => void;
 }
 
 const SearchSection = styled.div`
@@ -19,11 +20,79 @@ const SearchContainer = styled.div`
   margin-bottom: ${props => props.theme.spacing.md};
 `;
 
+const ClearSearchButton = styled.button`
+  position: absolute;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: ${props => props.theme.colors.gray[100]};
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 5;
+  
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  &:hover {
+    background: ${props => props.theme.colors.gray[200]};
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    color: ${props => props.theme.colors.text.secondary};
+  }
+`;
+
+const CompanyResetButton = styled.button`
+  position: absolute;
+  top: ${props => props.theme.spacing.sm};
+  right: ${props => props.theme.spacing.sm};
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  
+  &:hover {
+    opacity: 1;
+    transform: scale(1);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  svg {
+    width: 1rem;
+    height: 1rem;
+    color: ${props => props.theme.colors.primary[600]};
+  }
+`;
+
 const SearchInput = styled.input`
   width: 100%;
   padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.md};
   padding-left: 2.5rem;
-  padding-right: 2.5rem;
+  padding-right: 4rem;
   border: 1px solid ${props => props.theme.colors.gray[300]};
   border-radius: ${props => props.theme.borderRadius.md};
   font-size: ${props => props.theme.typography.fontSize.sm};
@@ -146,6 +215,7 @@ const CurrentCompanyCard = styled.div`
   padding: ${props => props.theme.spacing.md};
   position: relative;
   overflow: hidden;
+  transition: all 0.2s ease;
   
   &::before {
     content: '';
@@ -155,6 +225,16 @@ const CurrentCompanyCard = styled.div`
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, ${props => props.theme.colors.primary[400]} 0%, ${props => props.theme.colors.primary[600]} 100%);
+  }
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    ${CompanyResetButton} {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 `;
 
@@ -222,7 +302,8 @@ const NoCompanyText = styled.p`
 
 const CompanySearchSection: React.FC<CompanySearchSectionProps> = ({ 
   selectedCompany, 
-  onCompanySelect 
+  onCompanySelect,
+  onCompanyReset
 }) => {
   const [query, setQuery] = useState('');
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -282,6 +363,12 @@ const CompanySearchSection: React.FC<CompanySearchSectionProps> = ({
     }
   };
 
+  const handleReset = () => {
+    if (onCompanyReset) {
+      onCompanyReset();
+    }
+  };
+
   return (
     <SearchSection>
       <SearchContainer ref={containerRef}>
@@ -294,6 +381,15 @@ const CompanySearchSection: React.FC<CompanySearchSectionProps> = ({
           onChange={handleInputChange}
           onFocus={() => setDropdownOpen(true)}
         />
+        
+        <ClearSearchButton 
+          className={selectedCompany ? 'visible' : ''}
+          onClick={handleReset}
+          title="Clear company selection"
+        >
+          <XMarkIcon />
+        </ClearSearchButton>
+        
         <DropdownButton 
           onClick={handleDropdownToggle}
           style={{ transform: `translateY(-50%) rotate(${dropdownOpen ? '180deg' : '0deg'})` }}
@@ -323,6 +419,13 @@ const CompanySearchSection: React.FC<CompanySearchSectionProps> = ({
 
       {selectedCompany ? (
         <CurrentCompanyCard>
+          <CompanyResetButton 
+            onClick={handleReset}
+            title="Clear company selection"
+          >
+            <XMarkIcon />
+          </CompanyResetButton>
+          
           <CompanyHeader>
             <CompanyIcon>
               <BuildingOfficeIcon />
