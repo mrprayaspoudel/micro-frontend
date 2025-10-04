@@ -12,7 +12,7 @@ interface MenuBarProps {
 const MenuBarContainer = styled.nav`
   background-color: ${props => props.theme.colors.background.secondary};
   border-bottom: 1px solid ${props => props.theme.colors.gray[200]};
-  padding: ${props => props.theme.spacing.sm} 0;
+  padding: 0;
 `;
 
 const MenuList = styled.ul`
@@ -20,8 +20,8 @@ const MenuList = styled.ul`
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
-  padding: 0 ${props => props.theme.spacing.lg};
-  gap: ${props => props.theme.spacing.sm};
+  padding: 0 ${props => props.theme.spacing.sm};
+  gap: 0;
 `;
 
 const MenuItemContainer = styled.li`

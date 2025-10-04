@@ -30,12 +30,6 @@ const Layout: React.FC = () => {
   const { selectedCompany } = useAppStore();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const handleSearch = (query: string) => {
-    if (query.trim()) {
-      navigate(`/company/search?q=${encodeURIComponent(query)}`);
-    }
-  };
-
   const handleCompanySelect = (companyId: string) => {
     navigate(`/company/${companyId}`);
   };
@@ -45,7 +39,6 @@ const Layout: React.FC = () => {
       <Header
         user={user}
         company={company}
-        onSearch={handleSearch}
         onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
       />
       

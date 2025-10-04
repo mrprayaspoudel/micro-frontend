@@ -9,14 +9,13 @@ import {
 import { NotificationBadge } from '@shared/ui-components';
 import { User, Company } from '@shared/state';
 import { useAppStore, useAuthStore } from '@shared/state';
-import SearchDropdown from '../SearchDropdown/SearchDropdown';
+
 import ProfileModal from '../ProfileModal/ProfileModal';
 import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   user: User | null;
   company: Company | null;
-  onSearch: (query: string) => void;
   onToggleSidebar: () => void;
 }
 
@@ -24,8 +23,8 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 ${props => props.theme.spacing.lg};
-  height: 64px;
+  padding: ${props => props.theme.spacing.sm} ${props => props.theme.spacing.lg};
+  height: 56px;
   background-color: ${props => props.theme.colors.background.primary};
   border-bottom: 1px solid ${props => props.theme.colors.gray[200]};
   box-shadow: ${props => props.theme.shadows.sm};
@@ -63,14 +62,20 @@ const MenuButton = styled.button`
   background: transparent;
   border-radius: ${props => props.theme.borderRadius.md};
   cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
   
   &:hover {
     background-color: ${props => props.theme.colors.gray[100]};
   }
   
   svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
     color: ${props => props.theme.colors.text.secondary};
   }
 `;
@@ -81,17 +86,20 @@ const IconButton = styled.button`
   background: transparent;
   border-radius: ${props => props.theme.borderRadius.md};
   cursor: pointer;
+  height: 40px;
+  width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.15s ease;
   
   &:hover {
     background-color: ${props => props.theme.colors.gray[100]};
   }
   
   svg {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
     color: ${props => props.theme.colors.text.secondary};
   }
 `;
@@ -166,7 +174,7 @@ const DropdownItem = styled.button`
   }
 `;
 
-const Header: React.FC<HeaderProps> = ({ user, company, onSearch, onToggleSidebar }) => {
+const Header: React.FC<HeaderProps> = ({ user, company, onToggleSidebar }) => {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
   const userDropdownRef = useRef<HTMLDivElement>(null);
@@ -186,14 +194,7 @@ const Header: React.FC<HeaderProps> = ({ user, company, onSearch, onToggleSideba
     };
   }, []);
 
-  const handleCompanySelect = (company: Company) => {
-    setSelectedCompany(company);
-    navigate(`/company/${company.id}`);
-  };
 
-  const handleSearch = (query: string) => {
-    onSearch(query);
-  };
 
   const handleLogout = () => {
     const { logout } = useAuthStore.getState();
@@ -218,12 +219,6 @@ const Header: React.FC<HeaderProps> = ({ user, company, onSearch, onToggleSideba
           Enterprise Platform
         </LogoSection>
       </LeftSection>
-
-      <SearchDropdown
-        placeholder="Search companies..."
-        onCompanySelect={handleCompanySelect}
-        onSearch={handleSearch}
-      />
 
       <RightSection>
         <IconButton title="Knowledge Base">

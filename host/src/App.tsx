@@ -10,6 +10,25 @@ import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import RemoteErrorBoundary from './components/RemoteErrorBoundary/RemoteErrorBoundary';
 import { initializeModuleRegistry } from './utils/ModuleRegistry';
+import { DynamicModule } from './utils/RuntimeModuleLoader';
+import { useParams } from 'react-router-dom';
+
+// Component for dynamic module routing
+const DynamicModuleRoute: React.FC = () => {
+  const { moduleId } = useParams<{ moduleId: string }>();
+  
+  if (!moduleId) {
+    return <div>Module not specified</div>;
+  }
+
+  return (
+    <DynamicModule 
+      moduleId={moduleId} 
+      fallback={<LoadingSpinner />}
+      onError={(error) => console.error(`Module ${moduleId} error:`, error)}
+    />
+  );
+};
 
 // Lazy load micro frontends
 const CRMApp = React.lazy(() => import('crm-app/App'));
@@ -24,9 +43,7 @@ function App() {
     initializeAuth();
     
     // Initialize module registry for runtime loading
-    if (process.env.NODE_ENV === 'development') {
-      initializeModuleRegistry();
-    }
+    initializeModuleRegistry();
   }, [initializeAuth]);
 
   return (
@@ -49,6 +66,18 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="company/search" element={<SearchResults />} />
               <Route path="company/:id" element={<CompanyProfile />} />
+              
+              {/* Dynamic module routes */}
+              <Route 
+                path="modules/:moduleId/*" 
+                element={
+                  <RemoteErrorBoundary remoteName="Dynamic Module">
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <DynamicModuleRoute />
+                    </Suspense>
+                  </RemoteErrorBoundary>
+                } 
+              />
               
               {/* Micro frontend routes */}
               <Route 

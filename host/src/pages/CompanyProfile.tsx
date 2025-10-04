@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Company } from '@shared/state';
 import { MockApiService } from '@shared/utils';
 import { useAppStore } from '@shared/state';
+import { getEnabledModulesForCompany } from '../constants/modules';
 
 const PageContainer = styled.div`
   padding: ${props => props.theme.spacing.xl};
@@ -133,13 +134,8 @@ const CompanyProfile: React.FC = () => {
     return <PageContainer>Company not found</PageContainer>;
   }
 
-  // Mock module data - this would come from the backend
-  const availableModules = [
-    { id: 'crm', name: 'CRM', description: 'Customer Relationship Management' },
-    { id: 'inventory', name: 'Inventory', description: 'Inventory Management' },
-    { id: 'hr', name: 'HR', description: 'Human Resources' },
-    { id: 'finance', name: 'Finance', description: 'Financial Management' }
-  ].filter(module => company.modules.includes(module.id));
+  // Get enabled modules for the company
+  const availableModules = getEnabledModulesForCompany(company.modules);
 
   return (
     <PageContainer>
