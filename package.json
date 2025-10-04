@@ -18,19 +18,21 @@
     "start:finance": "(cd apps/finance-module && npm run preview)",
     "build": "lerna run build",
     "build:shared": "lerna run build --scope='@shared/*'",
+    "build:all": "lerna run build && npm run build:shared",
     "test": "lerna run test",
     "lint": "lerna run lint",
     "health-check": "curl -s http://localhost:3001/assets/remoteEntry.js > /dev/null && curl -s http://localhost:3002/assets/remoteEntry.js > /dev/null && curl -s http://localhost:3003/assets/remoteEntry.js > /dev/null && curl -s http://localhost:3004/assets/remoteEntry.js > /dev/null && echo '✅ All micro frontends are healthy' || echo '❌ Some micro frontends are not responding'",
     "check-ports": "lsof -i :3000,3001,3002,3003,3004 || echo 'All ports are available'",
     "kill-servers": "pkill -f 'vite.*--port.*300[0-4]' || echo 'No development servers found'",
-    "clean": "lerna clean"
+    "clean": "lerna clean",
+    "clean:all": "lerna clean --yes && find . -name 'node_modules' -type d -prune -exec rm -rf {} + && find . -name 'dist' -type d -prune -exec rm -rf {} +"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
-    "@types/node": "^20.19.17",
+    "@types/node": "^20.19.19",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "concurrently": "^8.2.2",
@@ -38,7 +40,8 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.2",
     "lerna": "^7.4.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vite": "^7.1.9"
   },
   "dependencies": {
     "react": "^18.3.1",
