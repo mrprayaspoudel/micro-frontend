@@ -161,19 +161,25 @@ const CompanyProfile: React.FC = () => {
 
       <SectionHeading>Available Modules</SectionHeading>
       
-      <ModulesGrid>
-        {availableModules.map((module) => (
-          <ModuleCard 
-            key={module.id}
-            onClick={() => handleModuleClick(module.id)}
-          >
-            <ModuleName>{module.name}</ModuleName>
-            <ModuleDescription>
-              {module.description}
-            </ModuleDescription>
-          </ModuleCard>
-        ))}
-      </ModulesGrid>
+      {availableModules.length > 0 ? (
+        <ModulesGrid>
+          {availableModules.map((module) => (
+            <ModuleCard 
+              key={module.id}
+              onClick={() => handleModuleClick(module.id)}
+            >
+              <ModuleName>{module.name}</ModuleName>
+              <ModuleDescription>
+                {module.description}
+              </ModuleDescription>
+            </ModuleCard>
+          ))}
+        </ModulesGrid>
+      ) : (
+        <CompanyDescription>
+          You are not allowed to use any modules. Please ask your administrator to enable modules for your company.
+        </CompanyDescription>
+      )}
     </PageContainer>
   );
 };

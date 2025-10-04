@@ -157,12 +157,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, selectedCompany, onCompanySel
               ))
             ) : (
               <HelpText>
-                No modules are enabled for this company. Contact your administrator to enable modules.
+                You are not allowed to use any modules. Please ask your administrator to enable modules for your company.
               </HelpText>
             )
           ) : (
             <HelpText>
-              Please select a company to view available modules.
+              Please select a company first to use the system.
             </HelpText>
           )}
         </ModuleList>

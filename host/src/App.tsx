@@ -8,6 +8,7 @@ import CompanyProfile from './pages/CompanyProfile';
 import SearchResults from './pages/SearchResults';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import ProtectedModuleRoute from './components/ProtectedModuleRoute/ProtectedModuleRoute';
 import RemoteErrorBoundary from './components/RemoteErrorBoundary/RemoteErrorBoundary';
 import { initializeModuleRegistry } from './utils/ModuleRegistry';
 import { SharedModuleLoader } from './utils/SharedModuleLoader';
@@ -43,45 +44,53 @@ function App() {
               <Route path="company/search" element={<SearchResults />} />
               <Route path="company/:id" element={<CompanyProfile />} />
               
-              {/* Micro frontend routes */}
+              {/* Micro frontend routes with access control */}
               <Route 
                 path="crm/*" 
                 element={
-                  <RemoteErrorBoundary remoteName="CRM">
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <SharedModuleLoader.CRMApp />
-                    </Suspense>
-                  </RemoteErrorBoundary>
+                  <ProtectedModuleRoute moduleId="crm">
+                    <RemoteErrorBoundary remoteName="CRM">
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <SharedModuleLoader.CRMApp />
+                      </Suspense>
+                    </RemoteErrorBoundary>
+                  </ProtectedModuleRoute>
                 } 
               />
               <Route 
                 path="inventory/*" 
                 element={
-                  <RemoteErrorBoundary remoteName="Inventory">
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <SharedModuleLoader.InventoryApp />
-                    </Suspense>
-                  </RemoteErrorBoundary>
+                  <ProtectedModuleRoute moduleId="inventory">
+                    <RemoteErrorBoundary remoteName="Inventory">
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <SharedModuleLoader.InventoryApp />
+                      </Suspense>
+                    </RemoteErrorBoundary>
+                  </ProtectedModuleRoute>
                 } 
               />
               <Route 
                 path="hr/*" 
                 element={
-                  <RemoteErrorBoundary remoteName="HR">
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <SharedModuleLoader.HRApp />
-                    </Suspense>
-                  </RemoteErrorBoundary>
+                  <ProtectedModuleRoute moduleId="hr">
+                    <RemoteErrorBoundary remoteName="HR">
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <SharedModuleLoader.HRApp />
+                      </Suspense>
+                    </RemoteErrorBoundary>
+                  </ProtectedModuleRoute>
                 } 
               />
               <Route 
                 path="finance/*" 
                 element={
-                  <RemoteErrorBoundary remoteName="Finance">
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <SharedModuleLoader.FinanceApp />
-                    </Suspense>
-                  </RemoteErrorBoundary>
+                  <ProtectedModuleRoute moduleId="finance">
+                    <RemoteErrorBoundary remoteName="Finance">
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <SharedModuleLoader.FinanceApp />
+                      </Suspense>
+                    </RemoteErrorBoundary>
+                  </ProtectedModuleRoute>
                 } 
               />
             </Route>

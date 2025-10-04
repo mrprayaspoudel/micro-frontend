@@ -1,32 +1,12 @@
-export interface ModuleDefinition {
-  id: string;
-  name: string;
-  description: string;
-}
+// Re-export from the new CompanyModuleService for backward compatibility
+export type { ModuleDefinition } from '../services/CompanyModuleService';
+export { CompanyModuleService } from '../services/CompanyModuleService';
 
-export const AVAILABLE_MODULES: ModuleDefinition[] = [
-  { 
-    id: 'crm', 
-    name: 'CRM', 
-    description: 'Customer Relationship Management' 
-  },
-  { 
-    id: 'inventory', 
-    name: 'Inventory', 
-    description: 'Inventory Management' 
-  },
-  { 
-    id: 'hr', 
-    name: 'HR', 
-    description: 'Human Resources' 
-  },
-  { 
-    id: 'finance', 
-    name: 'Finance', 
-    description: 'Financial Management' 
-  }
-];
+import { CompanyModuleService } from '../services/CompanyModuleService';
 
-export const getEnabledModulesForCompany = (companyModules: string[]): ModuleDefinition[] => {
-  return AVAILABLE_MODULES.filter(module => companyModules.includes(module.id));
+// Backward compatibility functions
+export const getEnabledModulesForCompany = (companyModules: string[]) => {
+  return CompanyModuleService.getEnabledModulesForCompany(companyModules);
 };
+
+export const AVAILABLE_MODULES = CompanyModuleService.getAvailableModules();

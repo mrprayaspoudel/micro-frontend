@@ -33,7 +33,7 @@
     "description": "International manufacturing company specializing in automotive parts and industrial equipment.",
     "logo": "https://via.placeholder.com/150x150?text=GlobalMfg",
     "status": "active",
-    "modules": ["inventory", "hr", "finance", "quality"],
+    "modules": ["inventory", "hr", "finance"],
     "subscription": {
       "plan": "professional",
       "startDate": "2024-03-15",
@@ -54,7 +54,7 @@
     "description": "Comprehensive healthcare services provider with multiple clinics and specialized medical centers.",
     "logo": "https://via.placeholder.com/150x150?text=HealthCare+",
     "status": "active",
-    "modules": ["hr", "finance", "patient-management"],
+    "modules": ["hr", "finance"],
     "subscription": {
       "plan": "healthcare",
       "startDate": "2024-02-01",
