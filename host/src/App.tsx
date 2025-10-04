@@ -10,31 +10,7 @@ import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import RemoteErrorBoundary from './components/RemoteErrorBoundary/RemoteErrorBoundary';
 import { initializeModuleRegistry } from './utils/ModuleRegistry';
-import { DynamicModule } from './utils/RuntimeModuleLoader';
-import { useParams } from 'react-router-dom';
-
-// Component for dynamic module routing
-const DynamicModuleRoute: React.FC = () => {
-  const { moduleId } = useParams<{ moduleId: string }>();
-  
-  if (!moduleId) {
-    return <div>Module not specified</div>;
-  }
-
-  return (
-    <DynamicModule 
-      moduleId={moduleId} 
-      fallback={<LoadingSpinner />}
-      onError={(error) => console.error(`Module ${moduleId} error:`, error)}
-    />
-  );
-};
-
-// Lazy load micro frontends
-const CRMApp = React.lazy(() => import('crm-app/App'));
-const InventoryApp = React.lazy(() => import('inventory-app/App'));
-const HRApp = React.lazy(() => import('hr-app/App'));
-const FinanceApp = React.lazy(() => import('finance-app/App'));
+import { SharedModuleLoader } from './utils/SharedModuleLoader';
 
 function App() {
   const { isAuthenticated, initializeAuth } = useAuthStore();
@@ -67,25 +43,13 @@ function App() {
               <Route path="company/search" element={<SearchResults />} />
               <Route path="company/:id" element={<CompanyProfile />} />
               
-              {/* Dynamic module routes */}
-              <Route 
-                path="modules/:moduleId/*" 
-                element={
-                  <RemoteErrorBoundary remoteName="Dynamic Module">
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <DynamicModuleRoute />
-                    </Suspense>
-                  </RemoteErrorBoundary>
-                } 
-              />
-              
               {/* Micro frontend routes */}
               <Route 
                 path="crm/*" 
                 element={
                   <RemoteErrorBoundary remoteName="CRM">
                     <Suspense fallback={<LoadingSpinner />}>
-                      <CRMApp />
+                      <SharedModuleLoader.CRMApp />
                     </Suspense>
                   </RemoteErrorBoundary>
                 } 
@@ -95,7 +59,7 @@ function App() {
                 element={
                   <RemoteErrorBoundary remoteName="Inventory">
                     <Suspense fallback={<LoadingSpinner />}>
-                      <InventoryApp />
+                      <SharedModuleLoader.InventoryApp />
                     </Suspense>
                   </RemoteErrorBoundary>
                 } 
@@ -105,7 +69,7 @@ function App() {
                 element={
                   <RemoteErrorBoundary remoteName="HR">
                     <Suspense fallback={<LoadingSpinner />}>
-                      <HRApp />
+                      <SharedModuleLoader.HRApp />
                     </Suspense>
                   </RemoteErrorBoundary>
                 } 
@@ -115,7 +79,7 @@ function App() {
                 element={
                   <RemoteErrorBoundary remoteName="Finance">
                     <Suspense fallback={<LoadingSpinner />}>
-                      <FinanceApp />
+                      <SharedModuleLoader.FinanceApp />
                     </Suspense>
                   </RemoteErrorBoundary>
                 } 

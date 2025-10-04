@@ -6,6 +6,7 @@ import { Company } from '@shared/state';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import RemoteErrorBoundary from '../RemoteErrorBoundary/RemoteErrorBoundary';
 import { DynamicModule, useDynamicModule } from '../../utils/RuntimeModuleLoader';
+import { SharedModuleLoader } from '../../utils/SharedModuleLoader';
 
 // Your existing styled components...
 const PanelOverlay = styled.div<{ $isOpen: boolean }>`
@@ -183,20 +184,15 @@ const EnhancedModulePanel: React.FC<EnhancedModulePanelProps> = ({
     }
   };
 
-  // Your existing static loading approach
+  // Static loading approach using shared module loader
   const renderStaticModule = () => {
-    // Your existing static lazy components
-    const CRMApp = React.lazy(() => import('crm-app/App'));
-    const InventoryApp = React.lazy(() => import('inventory-app/App'));
-    const HRApp = React.lazy(() => import('hr-app/App'));
-    const FinanceApp = React.lazy(() => import('finance-app/App'));
 
     switch (activeModule) {
       case 'crm':
         return (
           <RemoteErrorBoundary remoteName="CRM" onRetry={handleRetry}>
             <Suspense fallback={<LoadingSpinner />}>
-              <CRMApp />
+              <SharedModuleLoader.CRMApp />
             </Suspense>
           </RemoteErrorBoundary>
         );
@@ -204,7 +200,7 @@ const EnhancedModulePanel: React.FC<EnhancedModulePanelProps> = ({
         return (
           <RemoteErrorBoundary remoteName="Inventory" onRetry={handleRetry}>
             <Suspense fallback={<LoadingSpinner />}>
-              <InventoryApp />
+              <SharedModuleLoader.InventoryApp />
             </Suspense>
           </RemoteErrorBoundary>
         );
@@ -212,7 +208,7 @@ const EnhancedModulePanel: React.FC<EnhancedModulePanelProps> = ({
         return (
           <RemoteErrorBoundary remoteName="HR" onRetry={handleRetry}>
             <Suspense fallback={<LoadingSpinner />}>
-              <HRApp />
+              <SharedModuleLoader.HRApp />
             </Suspense>
           </RemoteErrorBoundary>
         );
@@ -220,7 +216,7 @@ const EnhancedModulePanel: React.FC<EnhancedModulePanelProps> = ({
         return (
           <RemoteErrorBoundary remoteName="Finance" onRetry={handleRetry}>
             <Suspense fallback={<LoadingSpinner />}>
-              <FinanceApp />
+              <SharedModuleLoader.FinanceApp />
             </Suspense>
           </RemoteErrorBoundary>
         );

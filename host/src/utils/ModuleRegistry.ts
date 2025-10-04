@@ -44,37 +44,10 @@ export function initializeModuleRegistry() {
     permissions: ['finance.read', 'finance.write']
   });
 
-  console.log('✅ Module registry initialized');
+  // Module registry initialized
 }
 
-// Enhanced module loader that can work with your existing lazy imports
-export const createModuleLoader = (moduleId: string) => {
-  return React.lazy(async () => {
-    try {
-      // Try runtime loading first
-      const runtimeModule = await RuntimeModuleLoader.loadModule(moduleId);
-      if (runtimeModule) {
-        return { default: runtimeModule };
-      }
-    } catch (error) {
-      console.warn(`Runtime loading failed for ${moduleId}, falling back to static import:`, error);
-    }
-
-    // Fallback to your existing static imports
-    switch (moduleId) {
-      case 'crm':
-        return import('crm-app/App');
-      case 'inventory':
-        return import('inventory-app/App');
-      case 'hr':
-        return import('hr-app/App');
-      case 'finance':
-        return import('finance-app/App');
-      default:
-        throw new Error(`Unknown module: ${moduleId}`);
-    }
-  });
-};
+// Removed unused createModuleLoader function
 
 // Module preloader for better performance
 export class ModulePreloader {
@@ -90,9 +63,9 @@ export class ModulePreloader {
     
     try {
       await preloadPromise;
-      console.log(`✅ Module ${moduleId} preloaded`);
+      // Module preloaded successfully
     } catch (error) {
-      console.warn(`⚠️ Failed to preload ${moduleId}:`, error);
+      // Failed to preload module
       this.preloadPromises.delete(moduleId);
     }
   }
@@ -102,7 +75,7 @@ export class ModulePreloader {
     const preloadPromises = modules.map(module => this.preloadModule(module));
     
     await Promise.allSettled(preloadPromises);
-    console.log('✅ All modules preload attempted');
+    // All modules preload attempted
   }
 
   // Smart preloading based on user permissions
@@ -117,6 +90,6 @@ export class ModulePreloader {
     );
 
     await Promise.allSettled(preloadPromises);
-    console.log(`✅ Preloaded ${allowedModules.length} modules based on user permissions`);
+    // Preloaded modules based on user permissions
   }
 }

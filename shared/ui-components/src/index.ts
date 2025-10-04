@@ -7,3 +7,4 @@ export { SafeWrapper } from './components/SafeWrapper';
 export { defaultTheme } from './theme/defaultTheme';
 export { safeTheme, withTheme } from './theme/themeUtils';
 export type { Theme } from './types/theme';
+export * from './components/SharedStyledComponents';

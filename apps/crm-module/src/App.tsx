@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
 import { crmTheme } from './theme';
@@ -15,7 +15,7 @@ interface CRMAppProps {
   basename?: string;
 }
 
-const CRMApp: React.FC<CRMAppProps> = ({ basename }) => {
+const CRMApp = ({ basename }: CRMAppProps) => {
     // Check if we're running as a standalone app or as a micro frontend
   const currentPort = window.location.port;
   const currentHost = window.location.hostname;

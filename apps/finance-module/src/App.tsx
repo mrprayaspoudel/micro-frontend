@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
 import { financeTheme } from './theme';
@@ -10,7 +10,7 @@ interface FinanceAppProps {
   basename?: string;
 }
 
-const FinanceApp: React.FC<FinanceAppProps> = ({ basename }) => {
+const FinanceApp = ({ basename }: FinanceAppProps) => {
   // Check if we're running as a standalone app or as a micro frontend
   const currentPort = window.location.port;
   const isStandalone = currentPort === '3004';

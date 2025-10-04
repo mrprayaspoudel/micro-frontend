@@ -1,17 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Button } from '@shared/ui-components';
-
-const PageContainer = styled.div`
-  padding: ${props => props.theme.spacing.xl};
-`;
-
-const PageTitle = styled.h1`
-  font-size: ${props => props.theme.typography.fontSize['2xl']};
-  font-weight: ${props => props.theme.typography.fontWeight.bold};
-  color: ${props => props.theme.colors.text.primary};
-  margin-bottom: ${props => props.theme.spacing.lg};
-`;
+import { Button, PageContainer, PageTitle } from '@shared/ui-components';
 
 const EmployeeGrid = styled.div`
   display: grid;
@@ -63,7 +51,7 @@ const mockEmployees = [
   }
 ];
 
-const EmployeeList: React.FC = () => {
+const EmployeeList = () => {
   return (
     <PageContainer>
       <PageTitle>Employee Management</PageTitle>

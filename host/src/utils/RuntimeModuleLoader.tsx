@@ -41,10 +41,14 @@ export class RuntimeModuleLoader {
       // Cache the loaded module
       this.loadedModules.set(moduleId, module.default || module);
       
-      console.log(`✅ Module ${moduleId} loaded successfully`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`✅ Module ${moduleId} loaded successfully`);
+      }
       return module.default || module;
     } catch (error) {
-      console.error(`❌ Failed to load module ${moduleId}:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`❌ Failed to load module ${moduleId}:`, error);
+      }
       throw error;
     }
   }
@@ -88,7 +92,9 @@ export class RuntimeModuleLoader {
     try {
       await this.loadModule(moduleId);
     } catch (error) {
-      console.warn(`Failed to preload module ${moduleId}:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Failed to preload module ${moduleId}:`, error);
+      }
     }
   }
 

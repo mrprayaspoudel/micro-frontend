@@ -5,12 +5,7 @@ import { useAppStore } from '@shared/state';
 import { Company } from '@shared/state';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import RemoteErrorBoundary from '../RemoteErrorBoundary/RemoteErrorBoundary';
-
-// Lazy load micro frontends
-const CRMApp = React.lazy(() => import('crm-app/App'));
-const InventoryApp = React.lazy(() => import('inventory-app/App'));
-const HRApp = React.lazy(() => import('hr-app/App'));
-const FinanceApp = React.lazy(() => import('finance-app/App'));
+import { SharedModuleLoader } from '../../utils/SharedModuleLoader';
 
 interface ModulePanelProps {
   isOpen: boolean;
@@ -240,7 +235,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isOpen, onClose, selectedComp
           return (
             <RemoteErrorBoundary remoteName="CRM" onRetry={handleRetry}>
               <Suspense fallback={<LoadingSpinner />}>
-                <CRMApp />
+                <SharedModuleLoader.CRMApp />
               </Suspense>
             </RemoteErrorBoundary>
           );
@@ -248,7 +243,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isOpen, onClose, selectedComp
           return (
             <RemoteErrorBoundary remoteName="Inventory" onRetry={handleRetry}>
               <Suspense fallback={<LoadingSpinner />}>
-                <InventoryApp />
+                <SharedModuleLoader.InventoryApp />
               </Suspense>
             </RemoteErrorBoundary>
           );
@@ -256,7 +251,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isOpen, onClose, selectedComp
           return (
             <RemoteErrorBoundary remoteName="HR" onRetry={handleRetry}>
               <Suspense fallback={<LoadingSpinner />}>
-                <HRApp />
+                <SharedModuleLoader.HRApp />
               </Suspense>
             </RemoteErrorBoundary>
           );
@@ -264,7 +259,7 @@ const ModulePanel: React.FC<ModulePanelProps> = ({ isOpen, onClose, selectedComp
           return (
             <RemoteErrorBoundary remoteName="Finance" onRetry={handleRetry}>
               <Suspense fallback={<LoadingSpinner />}>
-                <FinanceApp />
+                <SharedModuleLoader.FinanceApp />
               </Suspense>
             </RemoteErrorBoundary>
           );

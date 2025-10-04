@@ -1,17 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import { PageContainer, PageTitle } from '@shared/ui-components';
 
-const PageContainer = styled.div`
-  padding: ${props => props.theme.spacing.xl};
-`;
-
-const PageTitle = styled.h1`
-  font-size: ${props => props.theme.typography.fontSize['2xl']};
-  font-weight: ${props => props.theme.typography.fontWeight.bold};
-  color: ${props => props.theme.colors.text.primary};
-`;
-
-const Reports: React.FC = () => {
+const Reports = () => {
   return (
     <PageContainer>
       <PageTitle>CRM Reports</PageTitle>
