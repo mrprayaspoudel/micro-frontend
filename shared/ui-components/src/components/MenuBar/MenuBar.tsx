@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useModuleMenus, useModuleNavigate } from '@shared/utils';
@@ -122,18 +122,54 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
   const { menus, loading, error } = useModuleMenus(moduleId);
   const [openDropdowns, setOpenDropdowns] = useState<Set<string>>(new Set());
   const moduleNavigate = useModuleNavigate();
+  const menuBarRef = useRef<HTMLElement>(null);
+
+  // Handle click outside to close dropdowns
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuBarRef.current && !menuBarRef.current.contains(event.target as Node)) {
+        if (openDropdowns.size > 0) {
+          setOpenDropdowns(new Set());
+        }
+      }
+    };
+
+    // Handle escape key to close dropdowns
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && openDropdowns.size > 0) {
+        setOpenDropdowns(new Set());
+      }
+    };
+
+    if (openDropdowns.size > 0) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [openDropdowns]);
 
   const toggleDropdown = (menuId: string) => {
     const newOpenDropdowns = new Set(openDropdowns);
     if (newOpenDropdowns.has(menuId)) {
       newOpenDropdowns.delete(menuId);
     } else {
+      // Close all other dropdowns and open only this one
+      newOpenDropdowns.clear();
       newOpenDropdowns.add(menuId);
     }
     setOpenDropdowns(newOpenDropdowns);
   };
 
-  const handleMenuClick = (menu: MenuItem) => {
+  const handleMenuClick = (menu: MenuItem, event?: React.MouseEvent) => {
+    // Prevent event bubbling
+    if (event) {
+      event.stopPropagation();
+    }
+
     if (menu.children && menu.children.length > 0) {
       toggleDropdown(menu.id);
     } else if (menu.path) {
@@ -143,7 +179,12 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
     }
   };
 
-  const handleDropdownItemClick = (menu: MenuItem) => {
+  const handleDropdownItemClick = (menu: MenuItem, event?: React.MouseEvent) => {
+    // Prevent event bubbling
+    if (event) {
+      event.stopPropagation();
+    }
+
     if (menu.path) {
       moduleNavigate(menu.path);
       setOpenDropdowns(new Set());
@@ -179,14 +220,14 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
   }
 
   return (
-    <MenuBarContainer>
+    <MenuBarContainer ref={menuBarRef}>
       <MenuList>
         {menus.map((menu: MenuItem) => (
           <MenuItemContainer key={menu.id}>
             <MenuButton
               $isActive={isMenuActive(menu)}
               $hasChildren={!!(menu.children && menu.children.length > 0)}
-              onClick={() => handleMenuClick(menu)}
+              onClick={(event) => handleMenuClick(menu, event)}
             >
               {menu.label}
               {menu.children && menu.children.length > 0 && (
@@ -204,7 +245,7 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
                   <DropdownItem
                     key={child.id}
                     $isActive={child.path === currentPath}
-                    onClick={() => handleDropdownItemClick(child)}
+                    onClick={(event) => handleDropdownItemClick(child, event)}
                   >
                     {child.label}
                   </DropdownItem>
