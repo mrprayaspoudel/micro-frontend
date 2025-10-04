@@ -1,0 +1,140 @@
+{
+  "companyId": "1",
+  "employees": [
+    {
+      "id": "emp_001",
+      "employeeId": "TC001",
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@techcorp.com",
+      "phone": "+1-555-1001",
+      "department": "Sales",
+      "position": "Sales Manager",
+      "salary": 85000,
+      "hireDate": "2022-03-15",
+      "status": "active",
+      "manager": "emp_004",
+      "address": "123 Oak St, Tech City, TC 12345"
+    },
+    {
+      "id": "emp_002",
+      "employeeId": "TC002",
+      "firstName": "Sarah",
+      "lastName": "Johnson",
+      "email": "sarah.johnson@techcorp.com",
+      "phone": "+1-555-1002",
+      "department": "Engineering",
+      "position": "Senior Developer",
+      "salary": 95000,
+      "hireDate": "2021-07-20",
+      "status": "active",
+      "manager": "emp_005",
+      "address": "456 Pine Ave, Tech City, TC 12346"
+    },
+    {
+      "id": "emp_003",
+      "employeeId": "TC003",
+      "firstName": "Mike",
+      "lastName": "Brown",
+      "email": "mike.brown@techcorp.com",
+      "phone": "+1-555-1003",
+      "department": "Marketing",
+      "position": "Marketing Specialist",
+      "salary": 65000,
+      "hireDate": "2023-01-10",
+      "status": "active",
+      "manager": "emp_006",
+      "address": "789 Elm Rd, Tech City, TC 12347"
+    },
+    {
+      "id": "emp_004",
+      "employeeId": "TC004",
+      "firstName": "Lisa",
+      "lastName": "Garcia",
+      "email": "lisa.garcia@techcorp.com",
+      "phone": "+1-555-1004",
+      "department": "Sales",
+      "position": "Sales Director",
+      "salary": 120000,
+      "hireDate": "2020-05-12",
+      "status": "active",
+      "manager": null,
+      "address": "321 Maple Dr, Tech City, TC 12348"
+    }
+  ],
+  "attendance": [
+    {
+      "employeeId": "emp_001",
+      "date": "2024-10-01",
+      "checkIn": "08:30:00",
+      "checkOut": "17:15:00",
+      "hoursWorked": 8.75,
+      "status": "present"
+    },
+    {
+      "employeeId": "emp_002",
+      "date": "2024-10-01",
+      "checkIn": "09:00:00",
+      "checkOut": "18:00:00",
+      "hoursWorked": 9.0,
+      "status": "present"
+    },
+    {
+      "employeeId": "emp_001",
+      "date": "2024-10-02",
+      "checkIn": "08:45:00",
+      "checkOut": "17:30:00",
+      "hoursWorked": 8.75,
+      "status": "present"
+    }
+  ],
+  "leaveRequests": [
+    {
+      "id": "leave_001",
+      "employeeId": "emp_003",
+      "type": "vacation",
+      "startDate": "2024-10-15",
+      "endDate": "2024-10-18",
+      "days": 4,
+      "reason": "Family vacation",
+      "status": "pending",
+      "requestedDate": "2024-09-25",
+      "approver": "emp_006"
+    },
+    {
+      "id": "leave_002",
+      "employeeId": "emp_001",
+      "type": "sick",
+      "startDate": "2024-09-28",
+      "endDate": "2024-09-28",
+      "days": 1,
+      "reason": "Medical appointment",
+      "status": "approved",
+      "requestedDate": "2024-09-27",
+      "approver": "emp_004"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept_001",
+      "name": "Sales",
+      "head": "emp_004",
+      "budget": 500000,
+      "employeeCount": 15
+    },
+    {
+      "id": "dept_002",
+      "name": "Engineering",
+      "head": "emp_005",
+      "budget": 800000,
+      "employeeCount": 45
+    },
+    {
+      "id": "dept_003",
+      "name": "Marketing",
+      "head": "emp_006",
+      "budget": 300000,
+      "employeeCount": 12
+    }
+  ]
+}

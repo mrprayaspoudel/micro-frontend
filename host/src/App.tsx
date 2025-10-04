@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuthStore } from '@shared/state';
+import { useAuthStore, useAppStore } from '@shared/state';
 import Layout from './components/Layout/Layout';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
@@ -15,13 +15,15 @@ import { SharedModuleLoader } from './utils/SharedModuleLoader';
 
 function App() {
   const { isAuthenticated, initializeAuth } = useAuthStore();
+  const { initializeAppState } = useAppStore();
 
   useEffect(() => {
     initializeAuth();
+    initializeAppState();
     
     // Initialize module registry for runtime loading
     initializeModuleRegistry();
-  }, [initializeAuth]);
+  }, [initializeAuth, initializeAppState]);
 
   return (
     <Router

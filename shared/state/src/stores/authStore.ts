@@ -38,49 +38,29 @@ export const useAuthStore = create<AuthState & AuthActions>()(
           lastName: 'Admin',
           role: 'admin',
           companyId: '1',
-          avatar: 'https://via.placeholder.com/100x100?text=JA',
+          avatar: 'https://placehold.co/100x100?text=JA',
           permissions: ['read', 'write', 'delete', 'admin'],
           isActive: true,
           lastLogin: new Date().toISOString(),
           createdAt: '2024-01-01T00:00:00Z'
         };
 
-        const mockCompany: Company = {
-          id: '1',
-          name: 'TechCorp Solutions',
-          email: 'contact@techcorp.com',
-          phone: '+1-555-0123',
-          address: '123 Business Ave, Tech City, TC 12345',
-          industry: 'Technology',
-          employees: 250,
-          founded: '2015',
-          website: 'https://techcorp.com',
-          description: 'Leading technology solutions provider',
-          status: 'active',
-          modules: ['crm', 'inventory', 'hr', 'finance'],
-          subscription: {
-            plan: 'enterprise',
-            startDate: '2024-01-01',
-            endDate: '2024-12-31',
-            features: ['advanced-analytics', 'custom-integrations']
-          }
-        };
+        // Remove default company - user must select one
 
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         set((state) => {
           state.user = mockUser;
-          state.company = mockCompany;
+          state.company = null; // No default company
           state.isAuthenticated = true;
           state.isLoading = false;
           state.error = null;
         });
 
-        // Store in localStorage
+        // Store in localStorage (no company stored here)
         localStorage.setItem('auth_token', 'mock_token_' + Date.now());
         localStorage.setItem('user', JSON.stringify(mockUser));
-        localStorage.setItem('company', JSON.stringify(mockCompany));
 
       } catch (error) {
         set((state) => {
@@ -100,7 +80,7 @@ export const useAuthStore = create<AuthState & AuthActions>()(
 
       localStorage.removeItem('auth_token');
       localStorage.removeItem('user');
-      localStorage.removeItem('company');
+      localStorage.removeItem('selectedCompany'); // Clear selected company on logout
     },
 
     setUser: (user: User) => {
@@ -137,25 +117,21 @@ export const useAuthStore = create<AuthState & AuthActions>()(
     initializeAuth: () => {
       const token = localStorage.getItem('auth_token');
       const userStr = localStorage.getItem('user');
-      const companyStr = localStorage.getItem('company');
 
-      if (token && userStr && companyStr) {
+      if (token && userStr) {
         try {
           const user = JSON.parse(userStr);
-          const company = JSON.parse(companyStr);
           
           set((state) => {
             state.user = user;
-            state.company = company;
+            state.company = null; // Company will be loaded separately by app store
             state.isAuthenticated = true;
             state.isLoading = false;
           });
         } catch (error) {
-          // Failed to parse stored auth data, use defaults
-          // Clear invalid data
+          // Failed to parse stored auth data, clear invalid data
           localStorage.removeItem('auth_token');
           localStorage.removeItem('user');
-          localStorage.removeItem('company');
           
           set((state) => {
             state.isLoading = false;

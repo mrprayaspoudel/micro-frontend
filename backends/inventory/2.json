@@ -1,0 +1,114 @@
+{
+  "companyId": "2",
+  "products": [
+    {
+      "id": "prod_101",
+      "sku": "GM-ST-001",
+      "name": "Steel Beam Grade A",
+      "description": "High-quality structural steel beam 10ft length",
+      "category": "Raw Materials",
+      "price": 450,
+      "cost": 320,
+      "quantityInStock": 2500,
+      "reorderLevel": 500,
+      "supplier": "Steel Suppliers Inc",
+      "location": "Warehouse B1",
+      "lastUpdated": "2024-09-30T07:00:00Z"
+    },
+    {
+      "id": "prod_102",
+      "sku": "GM-AP-001",
+      "name": "Automotive Engine Block",
+      "description": "Cast iron engine block for automotive applications",
+      "category": "Finished Goods",
+      "price": 1200,
+      "cost": 850,
+      "quantityInStock": 150,
+      "reorderLevel": 25,
+      "supplier": "Internal Manufacturing",
+      "location": "Warehouse C2",
+      "lastUpdated": "2024-09-28T16:20:00Z"
+    },
+    {
+      "id": "prod_103",
+      "sku": "GM-TO-001",
+      "name": "Industrial Cutting Tool Set",
+      "description": "Professional grade cutting tools for manufacturing",
+      "category": "Tools",
+      "price": 850,
+      "cost": 420,
+      "quantityInStock": 75,
+      "reorderLevel": 10,
+      "supplier": "Tool Masters Inc",
+      "location": "Tool Crib A",
+      "lastUpdated": "2024-10-01T12:15:00Z"
+    }
+  ],
+  "stockMovements": [
+    {
+      "id": "mov_101",
+      "productId": "prod_101",
+      "type": "purchase",
+      "quantity": 1000,
+      "date": "2024-09-25T08:00:00Z",
+      "reference": "PO #3001",
+      "notes": "Monthly steel restock"
+    },
+    {
+      "id": "mov_102",
+      "productId": "prod_102",
+      "type": "production",
+      "quantity": 50,
+      "date": "2024-09-30T15:30:00Z",
+      "reference": "PROD #1025",
+      "notes": "Manufacturing batch #1025 completed"
+    },
+    {
+      "id": "mov_103",
+      "productId": "prod_101",
+      "type": "sale",
+      "quantity": -500,
+      "date": "2024-09-28T11:45:00Z",
+      "reference": "Order #2001",
+      "notes": "Sold to Steel Works Industries"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "sup_101",
+      "name": "Steel Suppliers Inc",
+      "email": "orders@steelsuppliers.com",
+      "phone": "+1-555-STEEL-1",
+      "address": "Industrial District, Steel City",
+      "paymentTerms": "Net 30",
+      "status": "active"
+    },
+    {
+      "id": "sup_102",
+      "name": "Tool Masters Inc",
+      "email": "sales@toolmasters.com",
+      "phone": "+1-555-TOOLS-1",
+      "address": "Manufacturing Ave, Tool City",
+      "paymentTerms": "Net 45",
+      "status": "active"
+    }
+  ],
+  "warehouses": [
+    {
+      "id": "wh_101",
+      "name": "Raw Materials Warehouse",
+      "location": "Manufacturing Complex - Building B",
+      "address": "456 Industrial Blvd, Manufacturing City, MC 54321",
+      "capacity": 50000,
+      "currentUtilization": 32000
+    },
+    {
+      "id": "wh_102",
+      "name": "Finished Goods Warehouse",
+      "location": "Manufacturing Complex - Building C",
+      "address": "456 Industrial Blvd, Manufacturing City, MC 54321",
+      "capacity": 25000,
+      "currentUtilization": 12500
+    }
+  ]
+}

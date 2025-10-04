@@ -63,6 +63,22 @@ export class MockApiService {
       case '/knowledge-base':
         return import('../../../../backends/knowledge-base.json').then(module => module.default) as Promise<T>;
       default:
+        // Handle module-specific endpoints with company ID
+        // Format: /crm/1, /hr/2, /finance/3, /inventory/1
+        const moduleMatch = endpoint.match(/^\/([a-z]+)\/(\d+)$/);
+        if (moduleMatch) {
+          const [, moduleName, companyId] = moduleMatch;
+          const validModules = ['crm', 'hr', 'finance', 'inventory'];
+          
+          if (validModules.includes(moduleName)) {
+            try {
+              return import(`../../../../backends/${moduleName}/${companyId}.json`).then(module => module.default) as Promise<T>;
+            } catch (error) {
+              throw new Error(`No data found for ${moduleName} module of company ${companyId}`);
+            }
+          }
+        }
+        
         throw new Error(`Mock endpoint ${endpoint} not found`);
     }
   }

@@ -10,7 +10,7 @@
     "founded": "2015",
     "website": "https://techcorp.com",
     "description": "Leading technology solutions provider specializing in enterprise software development and digital transformation.",
-    "logo": "https://via.placeholder.com/150x150?text=TechCorp",
+    "logo": "https://placehold.co/150x150?text=TechCorp",
     "status": "active",
     "modules": ["crm", "inventory", "hr", "finance"],
     "subscription": {
@@ -31,7 +31,7 @@
     "founded": "2008",
     "website": "https://globalmanuf.com",
     "description": "International manufacturing company specializing in automotive parts and industrial equipment.",
-    "logo": "https://via.placeholder.com/150x150?text=GlobalMfg",
+    "logo": "https://placehold.co/150x150?text=GlobalMfg",
     "status": "active",
     "modules": ["inventory", "hr", "finance"],
     "subscription": {
@@ -52,7 +52,7 @@
     "founded": "2012",
     "website": "https://healthcareplus.com",
     "description": "Comprehensive healthcare services provider with multiple clinics and specialized medical centers.",
-    "logo": "https://via.placeholder.com/150x150?text=HealthCare+",
+    "logo": "https://placehold.co/150x150?text=HealthCare+",
     "status": "active",
     "modules": ["hr", "finance"],
     "subscription": {

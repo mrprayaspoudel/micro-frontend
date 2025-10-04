@@ -1,0 +1,98 @@
+{
+  "companyId": "2",
+  "accounts": [
+    {
+      "id": "acc_101",
+      "accountNumber": "1101",
+      "accountName": "Cash - Main Operating",
+      "accountType": "asset",
+      "balance": 450000,
+      "currency": "USD",
+      "lastUpdated": "2024-10-01T09:00:00Z"
+    },
+    {
+      "id": "acc_102",
+      "accountNumber": "2101",
+      "accountName": "Accounts Receivable",
+      "accountType": "asset",
+      "balance": 320000,
+      "currency": "USD",
+      "lastUpdated": "2024-10-01T09:00:00Z"
+    },
+    {
+      "id": "acc_103",
+      "accountNumber": "3101",
+      "accountName": "Accounts Payable",
+      "accountType": "liability",
+      "balance": 185000,
+      "currency": "USD",
+      "lastUpdated": "2024-10-01T09:00:00Z"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "inv_101",
+      "invoiceNumber": "GM-2024-001",
+      "customerId": "cust_004",
+      "customerName": "Steel Works Industries",
+      "amount": 125000,
+      "currency": "USD",
+      "status": "paid",
+      "issueDate": "2024-08-15",
+      "dueDate": "2024-09-15",
+      "paidDate": "2024-09-10",
+      "items": [
+        {
+          "description": "Industrial Equipment - Batch #234",
+          "quantity": 5,
+          "unitPrice": 25000,
+          "total": 125000
+        }
+      ]
+    }
+  ],
+  "expenses": [
+    {
+      "id": "exp_101",
+      "category": "Raw Materials",
+      "amount": 50000,
+      "currency": "USD",
+      "date": "2024-09-25",
+      "vendor": "Steel Suppliers Inc",
+      "description": "Monthly steel procurement",
+      "status": "approved",
+      "approvedBy": "emp_104"
+    },
+    {
+      "id": "exp_102",
+      "category": "Equipment Maintenance",
+      "amount": 15000,
+      "currency": "USD",
+      "date": "2024-09-28",
+      "vendor": "Industrial Maintenance Co",
+      "description": "Monthly equipment servicing",
+      "status": "approved",
+      "approvedBy": "emp_104"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "budget_101",
+      "department": "Production",
+      "category": "Raw Materials",
+      "budgetAmount": 600000,
+      "spentAmount": 425000,
+      "period": "Q4 2024",
+      "status": "active"
+    },
+    {
+      "id": "budget_102",
+      "department": "Quality Control",
+      "category": "Testing Equipment",
+      "budgetAmount": 80000,
+      "spentAmount": 35000,
+      "period": "Q4 2024",
+      "status": "active"
+    }
+  ]
+}

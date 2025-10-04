@@ -109,6 +109,18 @@ export class CompanyModuleService {
   }
 
   /**
+   * Load module-specific data for a company
+   */
+  static async loadModuleData<T>(moduleId: string, companyId: string): Promise<T> {
+    try {
+      return await MockApiService.get<T>(`/${moduleId}/${companyId}`);
+    } catch (error) {
+      console.error(`Failed to load ${moduleId} data for company ${companyId}:`, error);
+      throw new Error(`No ${moduleId} data available for this company`);
+    }
+  }
+
+  /**
    * Clear cached companies (useful for refreshing data)
    */
   static clearCache(): void {

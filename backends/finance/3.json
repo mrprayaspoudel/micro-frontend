@@ -1,0 +1,98 @@
+{
+  "companyId": "3",
+  "accounts": [
+    {
+      "id": "acc_201",
+      "accountNumber": "1201",
+      "accountName": "Cash - Patient Services",
+      "accountType": "asset",
+      "balance": 350000,
+      "currency": "USD",
+      "lastUpdated": "2024-10-01T09:00:00Z"
+    },
+    {
+      "id": "acc_202",
+      "accountNumber": "2201",
+      "accountName": "Patient Receivables",
+      "accountType": "asset",
+      "balance": 280000,
+      "currency": "USD",
+      "lastUpdated": "2024-10-01T09:00:00Z"
+    },
+    {
+      "id": "acc_203",
+      "accountNumber": "3201",
+      "accountName": "Medical Supplies Payable",
+      "accountType": "liability",
+      "balance": 125000,
+      "currency": "USD",
+      "lastUpdated": "2024-10-01T09:00:00Z"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "inv_201",
+      "invoiceNumber": "HC-2024-001",
+      "customerId": "cust_006",
+      "customerName": "Medical Supplies Inc",
+      "amount": 35000,
+      "currency": "USD",
+      "status": "paid",
+      "issueDate": "2024-09-10",
+      "dueDate": "2024-10-10",
+      "paidDate": "2024-09-28",
+      "items": [
+        {
+          "description": "Medical Equipment Lease - September 2024",
+          "quantity": 1,
+          "unitPrice": 35000,
+          "total": 35000
+        }
+      ]
+    }
+  ],
+  "expenses": [
+    {
+      "id": "exp_201",
+      "category": "Medical Supplies",
+      "amount": 25000,
+      "currency": "USD",
+      "date": "2024-09-22",
+      "vendor": "Healthcare Supply Co",
+      "description": "Monthly medical supplies",
+      "status": "approved",
+      "approvedBy": "emp_201"
+    },
+    {
+      "id": "exp_202",
+      "category": "Facility Maintenance",
+      "amount": 8000,
+      "currency": "USD",
+      "date": "2024-09-30",
+      "vendor": "Healthcare Facility Services",
+      "description": "Monthly facility maintenance",
+      "status": "approved",
+      "approvedBy": "emp_204"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "budget_201",
+      "department": "Medical",
+      "category": "Medical Supplies",
+      "budgetAmount": 300000,
+      "spentAmount": 180000,
+      "period": "Q4 2024",
+      "status": "active"
+    },
+    {
+      "id": "budget_202",
+      "department": "Administration",
+      "category": "Operations",
+      "budgetAmount": 150000,
+      "spentAmount": 85000,
+      "period": "Q4 2024",
+      "status": "active"
+    }
+  ]
+}

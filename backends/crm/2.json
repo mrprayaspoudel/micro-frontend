@@ -1,0 +1,70 @@
+{
+  "companyId": "2",
+  "customers": [
+    {
+      "id": "cust_004",
+      "name": "Steel Works Industries",
+      "email": "procurement@steelworks.com",
+      "phone": "+1-555-0500",
+      "address": "500 Industrial Way, Steel City, SC 50005",
+      "industry": "Manufacturing",
+      "status": "active",
+      "assignedTo": "Tom Wilson",
+      "createdAt": "2024-01-20T08:00:00Z",
+      "lastContact": "2024-09-18T15:45:00Z"
+    },
+    {
+      "id": "cust_005",
+      "name": "Auto Parts Plus",
+      "email": "orders@autopartsplus.com",
+      "phone": "+1-555-0600",
+      "address": "600 Motor Ave, Auto City, AC 60006",
+      "industry": "Automotive",
+      "status": "active",
+      "assignedTo": "Lisa Garcia",
+      "createdAt": "2024-02-28T12:30:00Z",
+      "lastContact": "2024-09-22T10:15:00Z"
+    }
+  ],
+  "leads": [
+    {
+      "id": "lead_003",
+      "companyName": "Heavy Machinery Corp",
+      "contactName": "Robert Johnson",
+      "email": "robert@heavymachinery.com",
+      "phone": "+1-555-0701",
+      "source": "Trade Show",
+      "status": "qualified",
+      "score": 90,
+      "assignedTo": "Tom Wilson",
+      "createdAt": "2024-09-10T11:00:00Z",
+      "notes": "Interested in custom manufacturing solutions"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp_003",
+      "title": "Bulk Steel Supply Contract",
+      "customerId": "cust_004",
+      "value": 500000,
+      "stage": "qualification",
+      "probability": 40,
+      "expectedCloseDate": "2024-12-31",
+      "assignedTo": "Tom Wilson",
+      "createdAt": "2024-08-15T14:00:00Z",
+      "description": "Annual steel supply contract"
+    }
+  ],
+  "activities": [
+    {
+      "id": "act_003",
+      "type": "email",
+      "subject": "Pricing inquiry response",
+      "customerId": "cust_004",
+      "assignedTo": "Tom Wilson",
+      "scheduledDate": "2024-10-04T09:30:00Z",
+      "status": "completed",
+      "notes": "Sent detailed pricing breakdown"
+    }
+  ]
+}

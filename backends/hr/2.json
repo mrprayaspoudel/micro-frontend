@@ -1,0 +1,105 @@
+{
+  "companyId": "2",
+  "employees": [
+    {
+      "id": "emp_101",
+      "employeeId": "GM001",
+      "firstName": "Robert",
+      "lastName": "Martinez",
+      "email": "robert.martinez@globalmanuf.com",
+      "phone": "+1-555-2001",
+      "department": "Production",
+      "position": "Production Supervisor",
+      "salary": 75000,
+      "hireDate": "2019-08-15",
+      "status": "active",
+      "manager": "emp_104",
+      "address": "100 Factory Rd, Manufacturing City, MC 54321"
+    },
+    {
+      "id": "emp_102",
+      "employeeId": "GM002",
+      "firstName": "Jennifer",
+      "lastName": "Wilson",
+      "email": "jennifer.wilson@globalmanuf.com",
+      "phone": "+1-555-2002",
+      "department": "Quality Control",
+      "position": "QC Inspector",
+      "salary": 62000,
+      "hireDate": "2021-02-10",
+      "status": "active",
+      "manager": "emp_105",
+      "address": "200 Industrial Blvd, Manufacturing City, MC 54322"
+    },
+    {
+      "id": "emp_103",
+      "employeeId": "GM003",
+      "firstName": "David",
+      "lastName": "Chen",
+      "email": "david.chen@globalmanuf.com",
+      "phone": "+1-555-2003",
+      "department": "Logistics",
+      "position": "Warehouse Manager",
+      "salary": 68000,
+      "hireDate": "2020-11-03",
+      "status": "active",
+      "manager": "emp_106",
+      "address": "300 Logistics Ave, Manufacturing City, MC 54323"
+    }
+  ],
+  "attendance": [
+    {
+      "employeeId": "emp_101",
+      "date": "2024-10-01",
+      "checkIn": "07:00:00",
+      "checkOut": "15:30:00",
+      "hoursWorked": 8.5,
+      "status": "present"
+    },
+    {
+      "employeeId": "emp_102",
+      "date": "2024-10-01",
+      "checkIn": "08:00:00",
+      "checkOut": "16:30:00",
+      "hoursWorked": 8.5,
+      "status": "present"
+    }
+  ],
+  "leaveRequests": [
+    {
+      "id": "leave_101",
+      "employeeId": "emp_102",
+      "type": "vacation",
+      "startDate": "2024-11-01",
+      "endDate": "2024-11-05",
+      "days": 5,
+      "reason": "Personal time off",
+      "status": "approved",
+      "requestedDate": "2024-09-20",
+      "approver": "emp_105"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept_101",
+      "name": "Production",
+      "head": "emp_104",
+      "budget": 1200000,
+      "employeeCount": 85
+    },
+    {
+      "id": "dept_102",
+      "name": "Quality Control",
+      "head": "emp_105",
+      "budget": 400000,
+      "employeeCount": 25
+    },
+    {
+      "id": "dept_103",
+      "name": "Logistics",
+      "head": "emp_106",
+      "budget": 600000,
+      "employeeCount": 40
+    }
+  ]
+}

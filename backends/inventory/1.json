@@ -1,0 +1,114 @@
+{
+  "companyId": "1",
+  "products": [
+    {
+      "id": "prod_001",
+      "sku": "TC-SW-001",
+      "name": "Enterprise Software License",
+      "description": "Annual enterprise software license for unlimited users",
+      "category": "Software",
+      "price": 50000,
+      "cost": 15000,
+      "quantityInStock": 100,
+      "reorderLevel": 10,
+      "supplier": "Internal Development",
+      "location": "Digital Inventory",
+      "lastUpdated": "2024-09-30T10:00:00Z"
+    },
+    {
+      "id": "prod_002",
+      "sku": "TC-HW-001",
+      "name": "Enterprise Server Package",
+      "description": "Complete server hardware package with support",
+      "category": "Hardware",
+      "price": 25000,
+      "cost": 18000,
+      "quantityInStock": 5,
+      "reorderLevel": 2,
+      "supplier": "Dell Technologies",
+      "location": "Warehouse A",
+      "lastUpdated": "2024-09-28T14:30:00Z"
+    },
+    {
+      "id": "prod_003",
+      "sku": "TC-CS-001",
+      "name": "Consulting Services Package",
+      "description": "Professional consulting services - 100 hours",
+      "category": "Services",
+      "price": 15000,
+      "cost": 8000,
+      "quantityInStock": 50,
+      "reorderLevel": 5,
+      "supplier": "Internal Consulting",
+      "location": "Service Inventory",
+      "lastUpdated": "2024-10-01T08:15:00Z"
+    }
+  ],
+  "stockMovements": [
+    {
+      "id": "mov_001",
+      "productId": "prod_001",
+      "type": "sale",
+      "quantity": -2,
+      "date": "2024-09-25T10:30:00Z",
+      "reference": "Order #1001",
+      "notes": "Sold to Acme Corporation"
+    },
+    {
+      "id": "mov_002",
+      "productId": "prod_002",
+      "type": "purchase",
+      "quantity": 3,
+      "date": "2024-09-20T14:00:00Z",
+      "reference": "PO #2001",
+      "notes": "Restocked servers from Dell"
+    },
+    {
+      "id": "mov_003",
+      "productId": "prod_003",
+      "type": "adjustment",
+      "quantity": -5,
+      "date": "2024-09-30T16:45:00Z",
+      "reference": "ADJ #001",
+      "notes": "Services delivered to Digital Dynamics"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "sup_001",
+      "name": "Dell Technologies",
+      "email": "enterprise@dell.com",
+      "phone": "+1-800-DELL-EMC",
+      "address": "Round Rock, TX",
+      "paymentTerms": "Net 30",
+      "status": "active"
+    },
+    {
+      "id": "sup_002",
+      "name": "Microsoft Corporation",
+      "email": "enterprise@microsoft.com",
+      "phone": "+1-800-MICROSOFT",
+      "address": "Redmond, WA",
+      "paymentTerms": "Net 45",
+      "status": "active"
+    }
+  ],
+  "warehouses": [
+    {
+      "id": "wh_001",
+      "name": "Main Warehouse",
+      "location": "Tech City Distribution Center",
+      "address": "500 Warehouse Blvd, Tech City, TC 12350",
+      "capacity": 10000,
+      "currentUtilization": 3500
+    },
+    {
+      "id": "wh_002",
+      "name": "Digital Inventory",
+      "location": "Cloud Storage",
+      "address": "Virtual Location",
+      "capacity": 999999,
+      "currentUtilization": 150
+    }
+  ]
+}

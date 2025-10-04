@@ -11,6 +11,7 @@ interface AppActions {
   setSearchResults: (results: Company[]) => void;
   setSearching: (searching: boolean) => void;
   clearSearchResults: () => void;
+  initializeAppState: () => void;
 }
 
 export const useAppStore = create<AppState & AppActions>()(
@@ -28,7 +29,11 @@ export const useAppStore = create<AppState & AppActions>()(
     setSelectedCompany: (company: Company | null) => {
       set((state) => {
         state.selectedCompany = company;
+        
+        // Persist company selection to localStorage
         if (company) {
+          localStorage.setItem('selectedCompany', JSON.stringify(company));
+          
           // Load notifications for the selected company
           // This would typically be an API call
           const mockNotifications: Notification[] = [
@@ -44,6 +49,11 @@ export const useAppStore = create<AppState & AppActions>()(
           ];
           state.notifications = mockNotifications;
           state.unreadNotificationsCount = mockNotifications.filter(n => !n.isRead).length;
+        } else {
+          // Clear company from localStorage when null
+          localStorage.removeItem('selectedCompany');
+          state.notifications = [];
+          state.unreadNotificationsCount = 0;
         }
       });
     },
@@ -95,6 +105,36 @@ export const useAppStore = create<AppState & AppActions>()(
         state.searchResults = [];
         state.isSearching = false;
       });
+    },
+
+    initializeAppState: () => {
+      // Load selected company from localStorage
+      const selectedCompanyStr = localStorage.getItem('selectedCompany');
+      if (selectedCompanyStr) {
+        try {
+          const company = JSON.parse(selectedCompanyStr);
+          set((state) => {
+            state.selectedCompany = company;
+            // Load notifications for the restored company
+            const mockNotifications: Notification[] = [
+              {
+                id: '1',
+                title: 'System Maintenance Scheduled',
+                message: 'System maintenance is scheduled for tonight from 10 PM to 2 AM EST.',
+                type: 'warning',
+                priority: 'high',
+                isRead: false,
+                createdAt: new Date().toISOString()
+              }
+            ];
+            state.notifications = mockNotifications;
+            state.unreadNotificationsCount = mockNotifications.filter(n => !n.isRead).length;
+          });
+        } catch (error) {
+          // Failed to parse company data, remove invalid data
+          localStorage.removeItem('selectedCompany');
+        }
+      }
     }
   }))
 );

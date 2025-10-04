@@ -1,0 +1,105 @@
+{
+  "companyId": "3",
+  "employees": [
+    {
+      "id": "emp_201",
+      "employeeId": "HC001",
+      "firstName": "Dr. Jennifer",
+      "lastName": "Lee",
+      "email": "jennifer.lee@healthcareplus.com",
+      "phone": "+1-555-3001",
+      "department": "Medical",
+      "position": "Chief Medical Officer",
+      "salary": 180000,
+      "hireDate": "2018-04-01",
+      "status": "active",
+      "manager": null,
+      "address": "100 Medical Center Dr, Health City, HC 98765"
+    },
+    {
+      "id": "emp_202",
+      "employeeId": "HC002",
+      "firstName": "Michael",
+      "lastName": "Rodriguez",
+      "email": "michael.rodriguez@healthcareplus.com",
+      "phone": "+1-555-3002",
+      "department": "Nursing",
+      "position": "Head Nurse",
+      "salary": 85000,
+      "hireDate": "2019-09-15",
+      "status": "active",
+      "manager": "emp_201",
+      "address": "200 Care Ave, Health City, HC 98766"
+    },
+    {
+      "id": "emp_203",
+      "employeeId": "HC003",
+      "firstName": "Amanda",
+      "lastName": "Foster",
+      "email": "amanda.foster@healthcareplus.com",
+      "phone": "+1-555-3003",
+      "department": "Administration",
+      "position": "Patient Services Manager",
+      "salary": 72000,
+      "hireDate": "2020-06-20",
+      "status": "active",
+      "manager": "emp_204",
+      "address": "300 Admin Blvd, Health City, HC 98767"
+    }
+  ],
+  "attendance": [
+    {
+      "employeeId": "emp_201",
+      "date": "2024-10-01",
+      "checkIn": "07:30:00",
+      "checkOut": "19:00:00",
+      "hoursWorked": 11.5,
+      "status": "present"
+    },
+    {
+      "employeeId": "emp_202",
+      "date": "2024-10-01",
+      "checkIn": "06:00:00",
+      "checkOut": "14:30:00",
+      "hoursWorked": 8.5,
+      "status": "present"
+    }
+  ],
+  "leaveRequests": [
+    {
+      "id": "leave_201",
+      "employeeId": "emp_203",
+      "type": "sick",
+      "startDate": "2024-10-03",
+      "endDate": "2024-10-03",
+      "days": 1,
+      "reason": "Medical appointment",
+      "status": "approved",
+      "requestedDate": "2024-10-01",
+      "approver": "emp_204"
+    }
+  ],
+  "departments": [
+    {
+      "id": "dept_201",
+      "name": "Medical",
+      "head": "emp_201",
+      "budget": 2000000,
+      "employeeCount": 120
+    },
+    {
+      "id": "dept_202",
+      "name": "Nursing",
+      "head": "emp_202",
+      "budget": 1500000,
+      "employeeCount": 200
+    },
+    {
+      "id": "dept_203",
+      "name": "Administration",
+      "head": "emp_204",
+      "budget": 800000,
+      "employeeCount": 35
+    }
+  ]
+}

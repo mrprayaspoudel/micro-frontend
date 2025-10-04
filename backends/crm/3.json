@@ -1,0 +1,58 @@
+{
+  "companyId": "3",
+  "customers": [
+    {
+      "id": "cust_006",
+      "name": "Medical Supplies Inc",
+      "email": "orders@medicalsupplies.com",
+      "phone": "+1-555-0800",
+      "address": "800 Health Blvd, Medical City, MC 80008",
+      "industry": "Healthcare",
+      "status": "active",
+      "assignedTo": "Dr. Jennifer Lee",
+      "createdAt": "2024-03-10T07:45:00Z",
+      "lastContact": "2024-09-26T13:20:00Z"
+    }
+  ],
+  "leads": [
+    {
+      "id": "lead_004",
+      "companyName": "Regional Hospital Network",
+      "contactName": "Mark Thompson",
+      "email": "mark@regionalhospital.com",
+      "phone": "+1-555-0901",
+      "source": "Healthcare Conference",
+      "status": "new",
+      "score": 65,
+      "assignedTo": "Dr. Jennifer Lee",
+      "createdAt": "2024-09-25T16:00:00Z",
+      "notes": "Looking for comprehensive healthcare management system"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp_004",
+      "title": "Healthcare Management System",
+      "customerId": "cust_006",
+      "value": 200000,
+      "stage": "discovery",
+      "probability": 30,
+      "expectedCloseDate": "2025-02-28",
+      "assignedTo": "Dr. Jennifer Lee",
+      "createdAt": "2024-09-01T10:15:00Z",
+      "description": "Comprehensive patient and staff management system"
+    }
+  ],
+  "activities": [
+    {
+      "id": "act_004",
+      "type": "meeting",
+      "subject": "Requirements gathering session",
+      "customerId": "cust_006",
+      "assignedTo": "Dr. Jennifer Lee",
+      "scheduledDate": "2024-10-10T11:00:00Z",
+      "status": "scheduled",
+      "notes": "Discuss specific healthcare compliance requirements"
+    }
+  ]
+}

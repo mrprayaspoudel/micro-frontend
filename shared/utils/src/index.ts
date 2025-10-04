@@ -1,4 +1,5 @@
 export { apiClient, MockApiService } from './api/client';
+export { CRMService, HRService, FinanceService, InventoryService } from './services/ModuleDataService';
 export * from './helpers';
 export { useModuleNavigate } from './hooks/useModuleNavigate';
 export { useModuleMenus } from './menu/useModuleMenus';

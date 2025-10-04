@@ -1543,6 +1543,276 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+# Company-Based Module Access System
+
+## Overview
+The platform now includes a comprehensive company-based module access system with localStorage persistence and company-specific module data. This system enforces proper company selection before module access and provides isolated, company-specific data for each module.
+
+## 🎯 **Implementation Summary**
+
+Successfully implemented company selection persistence with localStorage and created a structured backend with company-specific module data. The system now enforces proper company selection before module access and provides company-specific data for each module.
+
+## 📁 **Backend Structure with Company-Specific Data**
+
+```
+backends/
+├── companies.json                    # Company definitions with module access
+├── knowledge-base.json              # Help articles and documentation
+├── module-menus.json               # Menu structures & role permissions
+├── notifications.json               # System notifications and alerts
+├── user-permissions.json           # User accounts & role definitions
+├── crm/                            # 🆕 CRM module data by company
+│   ├── 1.json                      # TechCorp Solutions CRM data
+│   ├── 2.json                      # Global Manufacturing CRM data  
+│   └── 3.json                      # HealthCare Plus CRM data
+├── hr/                             # 🆕 HR module data by company
+│   ├── 1.json                      # TechCorp Solutions HR data
+│   ├── 2.json                      # Global Manufacturing HR data
+│   └── 3.json                      # HealthCare Plus HR data
+├── finance/                        # 🆕 Finance module data by company
+│   ├── 1.json                      # TechCorp Solutions Finance data
+│   ├── 2.json                      # Global Manufacturing Finance data
+│   └── 3.json                      # HealthCare Plus Finance data
+└── inventory/                      # 🆕 Inventory module data by company
+    ├── 1.json                      # TechCorp Solutions Inventory data
+    ├── 2.json                      # Global Manufacturing Inventory data
+    └── 3.json                      # HealthCare Plus Inventory data
+```
+
+## Key Features
+
+### 1. **Company Selection & Persistence**
+- **No Default Company**: After login, no company is selected by default
+- **localStorage Persistence**: Selected company is stored in `localStorage` with key `selectedCompany`
+- **Session Restoration**: Selected company is restored when user refreshes the page or returns to the application
+- **Clear on Logout**: Selected company is cleared when user logs out
+
+### 2. **Dynamic Module Access Control**
+- **Company-Based Permissions**: Each company has a `modules` array in `companies.json` defining accessible modules
+- **Access Validation**: All module routes are protected and validate company access before rendering
+- **User-Friendly Messages**: Clear error messages guide users through proper workflow
+
+### 3. **Module-Specific Backend Data**
+Each company has completely separate data sets for each module they have access to, ensuring complete data isolation.
+
+## 🎯 **Company Access Matrix**
+
+| Company | ID | CRM | Inventory | HR | Finance | Industry Focus |
+|---------|----|----|-----------|----|---------| --------------|
+| TechCorp Solutions | 1 | ✅ | ✅ | ✅ | ✅ | Technology & Software |
+| Global Manufacturing | 2 | ❌ | ✅ | ✅ | ✅ | Industrial Manufacturing |  
+| HealthCare Plus | 3 | ❌ | ❌ | ✅ | ✅ | Healthcare Services |
+
+## Data Structure Examples
+
+### Company Definition (companies.json)
+```json
+{
+  "id": "1",
+  "name": "TechCorp Solutions",
+  "email": "contact@techcorp.com",
+  "modules": ["crm", "inventory", "hr", "finance"],
+  "industry": "Technology",
+  "employees": 250
+}
+```
+
+### CRM Module Data (backends/crm/1.json)
+```json
+{
+  "companyId": "1",
+  "customers": [
+    {
+      "id": "cust_001",
+      "name": "Acme Corporation",
+      "email": "contact@acme-corp.com",
+      "industry": "Manufacturing",
+      "status": "active"
+    }
+  ],
+  "leads": [...],
+  "opportunities": [...],
+  "activities": [...]
+}
+```
+
+### HR Module Data (backends/hr/1.json)
+```json
+{
+  "companyId": "1",
+  "employees": [
+    {
+      "id": "emp_001",
+      "employeeId": "TC001",
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@techcorp.com",
+      "department": "Sales",
+      "position": "Sales Manager"
+    }
+  ],
+  "attendance": [...],
+  "leaveRequests": [...],
+  "departments": [...]
+}
+```
+
+## API Endpoints
+
+### Company Data
+- `GET /companies` - List all companies
+
+### Module-Specific Data  
+- `GET /crm/{companyId}` - CRM data for specific company
+- `GET /hr/{companyId}` - HR data for specific company
+- `GET /finance/{companyId}` - Finance data for specific company
+- `GET /inventory/{companyId}` - Inventory data for specific company
+
+## Using Module Data Services
+
+The platform provides specialized services for accessing company-specific data:
+
+```typescript
+import { CRMService, HRService, FinanceService, InventoryService } from '@shared/utils';
+import { useAppStore } from '@shared/state';
+
+// In your component
+const { selectedCompany } = useAppStore();
+
+// Load CRM data for selected company
+if (selectedCompany) {
+  const customers = await CRMService.getCustomers(selectedCompany.id);
+  const leads = await CRMService.getLeads(selectedCompany.id);
+  const opportunities = await CRMService.getOpportunities(selectedCompany.id);
+}
+
+// Load HR data
+if (selectedCompany) {
+  const employees = await HRService.getEmployees(selectedCompany.id);
+  const attendance = await HRService.getAttendance(selectedCompany.id);
+  const departments = await HRService.getDepartments(selectedCompany.id);
+}
+```
+
+## 📊 **Sample Data Created**
+
+### CRM Data Structure
+Each company has customized CRM data including:
+- **Customers**: Company-specific customer lists with relevant industries
+- **Leads**: Targeted leads based on company focus  
+- **Opportunities**: Sales opportunities matching company scale
+- **Activities**: Scheduled activities and follow-ups
+
+### HR Data Structure
+Each company has HR data including:
+- **Employees**: Company-specific employee roster with proper email domains
+- **Attendance**: Daily attendance records
+- **Leave Requests**: Vacation and sick leave management
+- **Departments**: Organizational structure per company
+
+### Finance Data Structure
+Each company has finance data including:
+- **Accounts**: Chart of accounts with company-specific naming
+- **Invoices**: Customer invoices with proper numbering schemes
+- **Expenses**: Operating expenses relevant to each industry
+- **Budgets**: Departmental budgets scaled to company size
+
+### Inventory Data Structure
+Each company has inventory data including:
+- **Products**: Industry-specific product catalogs
+- **Stock Movements**: Purchase, sales, and adjustment transactions
+- **Suppliers**: Vendor relationships relevant to each industry
+- **Warehouses**: Physical locations and capacity management
+
+## 🚀 **User Experience Flow**
+
+### 1. **Login**
+- User logs in with credentials
+- No company is selected by default  
+- Dashboard shows "Please select a company" message
+
+### 2. **Company Selection**
+- User searches and selects a company from the sidebar
+- Selected company is stored in `localStorage`
+- Available modules are shown based on company permissions
+- Dashboard shows company-specific information
+
+### 3. **Module Access**
+- User clicks on an available module
+- System validates company access to the module
+- If authorized: Module loads with company-specific data
+- If not authorized: Error message is displayed
+
+### 4. **Session Persistence**
+- Selected company persists across browser sessions
+- Page refreshes maintain company selection
+- User can switch companies at any time
+
+### 5. **Logout**
+- Selected company is cleared from `localStorage`
+- User must select company again on next login
+
+## Error Messages
+
+### No Company Selected
+> "Please select a company first to use the system."
+
+### Module Access Denied
+> "You are not allowed to use this module. Please ask your administrator to enable it for your company."
+
+### No Modules Available
+> "You are not allowed to use any modules. Please ask your administrator to enable modules for your company."
+
+## 💻 **Usage Examples**
+
+### Module Protection Example
+- Navigate to `/crm` without company → "Please select a company first"
+- Select HealthCare Plus → Navigate to `/crm` → "Not allowed to use this module"
+- Select TechCorp → Navigate to `/crm` → Loads TechCorp's CRM data
+
+## ✅ **Testing Scenarios**
+
+1. **Fresh Login**: No company selected, must select one to access modules
+2. **Company Selection**: Select TechCorp → Access all modules with TechCorp data
+3. **Limited Access**: Select HealthCare Plus → CRM/Inventory blocked, HR/Finance available
+4. **Data Isolation**: Switch companies → See different data sets
+5. **Persistence**: Refresh page → Company selection maintained
+6. **Logout/Login**: Company cleared, must select again
+
+## Development Notes
+
+### Adding New Companies
+1. Add company definition to `backends/companies.json`
+2. Create module data files in respective folders (e.g., `backends/crm/4.json`)
+3. Define which modules the company can access in the `modules` array
+
+### Adding New Modules
+1. Create new backend folder (e.g., `backends/newmodule/`)
+2. Add company-specific data files
+3. Update `MockApiService` to handle the new endpoint pattern
+4. Create service class in `ModuleDataService.ts`
+5. Add module to `AVAILABLE_MODULES` in `CompanyModuleService.ts`
+
+## 🎉 **Benefits Achieved**
+
+✅ **Complete Data Isolation** - Each company sees only their data  
+✅ **Dynamic Access Control** - Module access based on company permissions  
+✅ **Persistent User Experience** - Company selection survives sessions  
+✅ **Scalable Architecture** - Easy to add new companies and modules  
+✅ **Clear User Guidance** - Intuitive error messages and workflow  
+✅ **Secure by Design** - Route-level access control enforcement
+
+## 🌐 **System Status**
+
+- **Build**: ✅ Successful  
+- **Servers**: ✅ All running (ports 3000-3004)
+- **Access Control**: ✅ Fully implemented
+- **Data Structure**: ✅ Complete for all modules
+- **LocalStorage**: ✅ Company persistence working
+- **Documentation**: ✅ Complete with examples
+
+---
+
 **For support, questions, or contributions, please open an issue or contact the development team.**
 
 **Happy coding! 🎉**

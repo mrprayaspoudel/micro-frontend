@@ -1,0 +1,114 @@
+{
+  "companyId": "3",
+  "products": [
+    {
+      "id": "prod_201",
+      "sku": "HC-MS-001",
+      "name": "Surgical Masks (Box of 50)",
+      "description": "Medical grade disposable surgical masks",
+      "category": "Medical Supplies",
+      "price": 25,
+      "cost": 12,
+      "quantityInStock": 500,
+      "reorderLevel": 100,
+      "supplier": "Medical Supply Co",
+      "location": "Medical Storage A",
+      "lastUpdated": "2024-09-29T13:00:00Z"
+    },
+    {
+      "id": "prod_202",
+      "sku": "HC-GL-001",
+      "name": "Latex Gloves (Box of 100)",
+      "description": "Sterile latex examination gloves",
+      "category": "Medical Supplies",
+      "price": 18,
+      "cost": 8,
+      "quantityInStock": 750,
+      "reorderLevel": 150,
+      "supplier": "Medical Supply Co",
+      "location": "Medical Storage A",
+      "lastUpdated": "2024-09-30T09:45:00Z"
+    },
+    {
+      "id": "prod_203",
+      "sku": "HC-SY-001",
+      "name": "Digital Syringe 10ml",
+      "description": "Sterile disposable syringes with safety mechanism",
+      "category": "Medical Equipment",
+      "price": 35,
+      "cost": 20,
+      "quantityInStock": 200,
+      "reorderLevel": 50,
+      "supplier": "MedTech Equipment",
+      "location": "Medical Storage B",
+      "lastUpdated": "2024-10-01T11:30:00Z"
+    }
+  ],
+  "stockMovements": [
+    {
+      "id": "mov_201",
+      "productId": "prod_201",
+      "type": "consumption",
+      "quantity": -100,
+      "date": "2024-09-28T14:20:00Z",
+      "reference": "DEPT-001",
+      "notes": "Used in surgical department"
+    },
+    {
+      "id": "mov_202",
+      "productId": "prod_202",
+      "type": "purchase",
+      "quantity": 200,
+      "date": "2024-09-25T10:00:00Z",
+      "reference": "PO #4001",
+      "notes": "Monthly supply restock"
+    },
+    {
+      "id": "mov_203",
+      "productId": "prod_203",
+      "type": "consumption",
+      "quantity": -25,
+      "date": "2024-09-30T16:15:00Z",
+      "reference": "DEPT-002",
+      "notes": "Emergency department usage"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "sup_201",
+      "name": "Medical Supply Co",
+      "email": "orders@medicalsupply.com",
+      "phone": "+1-555-MED-SUP",
+      "address": "Healthcare District, Medical City",
+      "paymentTerms": "Net 30",
+      "status": "active"
+    },
+    {
+      "id": "sup_202",
+      "name": "MedTech Equipment",
+      "email": "sales@medtechequip.com",
+      "phone": "+1-555-MEDTECH",
+      "address": "Technology Park, MedTech City",
+      "paymentTerms": "Net 45",
+      "status": "active"
+    }
+  ],
+  "warehouses": [
+    {
+      "id": "wh_201",
+      "name": "Medical Storage A",
+      "location": "Healthcare Complex - Building A",
+      "address": "789 Medical Center Dr, Health City, HC 98765",
+      "capacity": 5000,
+      "currentUtilization": 3200
+    },
+    {
+      "id": "wh_202",
+      "name": "Medical Storage B",
+      "location": "Healthcare Complex - Building B",
+      "address": "789 Medical Center Dr, Health City, HC 98765",
+      "capacity": 3000,
+      "currentUtilization": 1800
+    }
+  ]
+}
