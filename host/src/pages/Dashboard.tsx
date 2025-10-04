@@ -15,7 +15,7 @@ const PageTitle = styled.h1`
 const WelcomeCard = styled.div`
   background-color: ${props => props.theme.colors.background.primary};
   border-radius: ${props => props.theme.borderRadius.lg};
-  padding: ${props => props.theme.spacing.xl};
+  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.xl};
   box-shadow: ${props => props.theme.shadows.md};
   margin-bottom: ${props => props.theme.spacing.lg};
 `;
@@ -50,10 +50,9 @@ const StatLabel = styled.div`
 const Dashboard: React.FC = () => {
   return (
     <PageContainer>
-      <PageTitle>Dashboard</PageTitle>
       
       <WelcomeCard>
-        <h2>Welcome to the Enterprise Platform</h2>
+        <h3>Welcome to the Enterprise Platform</h3>
         <p>Manage your business operations across multiple modules from this unified dashboard.</p>
       </WelcomeCard>
       

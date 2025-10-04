@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Company } from '@shared/state';
 import { MockApiService } from '@shared/utils';
 import { MagnifyingGlassIcon, ChevronDownIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
+import { useDropdownManager } from '../../hooks/useDropdownManager';
 
 interface CompanySearchSectionProps {
   selectedCompany: Company | null;
@@ -227,8 +228,10 @@ const CompanySearchSection: React.FC<CompanySearchSectionProps> = ({
   const [companies, setCompanies] = useState<Company[]>([]);
   const [filteredCompanies, setFilteredCompanies] = useState<Company[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Use the dropdown manager for coordinated dropdown behavior
+  const containerRef = useDropdownManager('company-search-dropdown', dropdownOpen, () => setDropdownOpen(false));
 
   // Load companies on mount
   useEffect(() => {
@@ -258,16 +261,7 @@ const CompanySearchSection: React.FC<CompanySearchSectionProps> = ({
     }
   }, [query, companies]);
 
-  // Handle clicks outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+
 
   const handleCompanySelect = (company: Company) => {
     onCompanySelect(company);
@@ -280,7 +274,8 @@ const CompanySearchSection: React.FC<CompanySearchSectionProps> = ({
     if (!dropdownOpen) setDropdownOpen(true);
   };
 
-  const handleDropdownToggle = () => {
+  const handleDropdownToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setDropdownOpen(!dropdownOpen);
     if (!dropdownOpen) {
       inputRef.current?.focus();

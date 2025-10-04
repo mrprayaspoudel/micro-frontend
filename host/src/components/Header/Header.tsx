@@ -12,6 +12,7 @@ import { useAppStore, useAuthStore } from '@shared/state';
 
 import ProfileModal from '../ProfileModal/ProfileModal';
 import { useNavigate } from 'react-router-dom';
+import { useDropdownManager } from '../../hooks/useDropdownManager';
 
 interface HeaderProps {
   user: User | null;
@@ -177,22 +178,11 @@ const DropdownItem = styled.button`
 const Header: React.FC<HeaderProps> = ({ user, company, onToggleSidebar }) => {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
-  const userDropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { unreadNotificationsCount, setSelectedCompany } = useAppStore();
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
-        setUserDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  // Use the dropdown manager for coordinated dropdown behavior
+  const userDropdownRef = useDropdownManager('header-user-dropdown', userDropdownOpen, () => setUserDropdownOpen(false));
 
 
 
@@ -236,7 +226,10 @@ const Header: React.FC<HeaderProps> = ({ user, company, onToggleSidebar }) => {
         
         {user && (
           <UserDropdown ref={userDropdownRef}>
-            <UserButton onClick={() => setUserDropdownOpen(!userDropdownOpen)}>
+            <UserButton onClick={(e) => {
+              e.stopPropagation();
+              setUserDropdownOpen(!userDropdownOpen);
+            }}>
               <UserAvatar 
                 src={user.avatar || `https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&background=3b82f6&color=fff`} 
                 alt={`${user.firstName} ${user.lastName}`} 
