@@ -1,5 +1,19 @@
 {
   "companyId": "3",
+  "metrics": {
+    "totalProducts": 28,
+    "totalStockValue": 32400000,
+    "lowStockItems": 5,
+    "outOfStockItems": 2,
+    "totalSuppliers": 15,
+    "activeSuppliers": 14,
+    "warehouseCount": 6,
+    "warehouseUtilization": 82.5,
+    "monthlyStockMovements": 120,
+    "topSellingCategory": "Services",
+    "averageInventoryTurnover": 8.4,
+    "stockAccuracy": 99.2
+  },
   "products": [
     {
       "id": "prod_201",

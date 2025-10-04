@@ -1,6 +1,8 @@
 
+import React, { useEffect } from 'react';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
+import { useAppStore } from '@shared/state';
 import { crmTheme } from './theme';
 
 
@@ -16,7 +18,14 @@ interface CRMAppProps {
 }
 
 const CRMApp = ({ basename }: CRMAppProps) => {
-    // Check if we're running as a standalone app or as a micro frontend
+  const { initializeAppState } = useAppStore();
+  
+  // Initialize app state when CRM module loads
+  useEffect(() => {
+    initializeAppState();
+  }, [initializeAppState]);
+
+  // Check if we're running as a standalone app or as a micro frontend
   const currentPort = window.location.port;
   const currentHost = window.location.hostname;
   const isStandalone = currentPort === '3001';

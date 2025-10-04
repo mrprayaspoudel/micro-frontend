@@ -1,5 +1,19 @@
 {
   "companyId": "3",
+  "metrics": {
+    "totalRevenue": 3800000,
+    "monthlyRevenue": 380000,
+    "totalExpenses": 28000,
+    "netProfit": 3772000,
+    "totalInvoices": 18,
+    "paidInvoices": 15,
+    "pendingInvoices": 2,
+    "overdueInvoices": 1,
+    "accountsReceivable": 520000,
+    "accountsPayable": 280000,
+    "cashFlow": 750000,
+    "profitMargin": 99.3
+  },
   "accounts": [
     {
       "id": "acc_201",

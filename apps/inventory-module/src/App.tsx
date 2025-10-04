@@ -1,6 +1,8 @@
 
+import React, { useEffect } from 'react';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
+import { useAppStore } from '@shared/state';
 import { inventoryTheme } from './theme';
 import ProductList from './pages/ProductList';
 import StockManagement from './pages/StockManagement';
@@ -11,9 +13,17 @@ interface InventoryAppProps {
 }
 
 const InventoryApp = ({ basename }: InventoryAppProps) => {
+  const { initializeAppState } = useAppStore();
+  
+  // Initialize app state when Inventory module loads
+  useEffect(() => {
+    initializeAppState();
+  }, [initializeAppState]);
+
   // Check if we're running as a standalone app or as a micro frontend
   const currentPort = window.location.port;
-  const isStandalone = currentPort === '3002';
+  const currentHost = window.location.hostname;
+  const isStandalone = currentPort === '3004';
   
   const AppContent = () => {
     const location = useLocation();

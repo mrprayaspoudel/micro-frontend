@@ -1,5 +1,19 @@
 {
   "companyId": "2",
+  "metrics": {
+    "totalEmployees": 145,
+    "activeEmployees": 142,
+    "newHiresThisMonth": 8,
+    "departmentCount": 5,
+    "averageSalary": 105000,
+    "attendanceRate": 94.2,
+    "pendingLeaveRequests": 4,
+    "approvedLeaveRequests": 12,
+    "employeeTurnoverRate": 6.2,
+    "totalPayroll": 15225000,
+    "vacancyRate": 2.1,
+    "trainingHoursThisMonth": 580
+  },
   "employees": [
     {
       "id": "emp_101",

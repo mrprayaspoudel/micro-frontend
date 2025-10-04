@@ -1,5 +1,17 @@
 {
   "companyId": "2",
+  "metrics": {
+    "totalCustomers": 5,
+    "activeCustomers": 4,
+    "totalLeads": 8,
+    "qualifiedLeads": 3,
+    "openOpportunities": 4,
+    "totalOpportunityValue": 850000,
+    "monthlyRevenue": 220000,
+    "conversionRate": 37.5,
+    "averageDealSize": 212500,
+    "activitiesThisMonth": 28
+  },
   "customers": [
     {
       "id": "cust_004",

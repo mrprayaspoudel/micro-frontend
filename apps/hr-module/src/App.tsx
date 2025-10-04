@@ -1,6 +1,8 @@
 
+import React, { useEffect } from 'react';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
+import { useAppStore } from '@shared/state';
 import { hrTheme } from './theme';
 import EmployeeList from './pages/EmployeeList';
 import Attendance from './pages/Attendance';
@@ -11,8 +13,16 @@ interface HRAppProps {
 }
 
 const HRApp = ({ basename }: HRAppProps) => {
+  const { initializeAppState } = useAppStore();
+  
+  // Initialize app state when HR module loads
+  useEffect(() => {
+    initializeAppState();
+  }, [initializeAppState]);
+
   // Check if we're running as a standalone app or as a micro frontend
   const currentPort = window.location.port;
+  const currentHost = window.location.hostname;
   const isStandalone = currentPort === '3003';
   
   const AppContent = () => {

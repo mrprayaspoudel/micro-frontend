@@ -1,5 +1,19 @@
 {
   "companyId": "2",
+  "metrics": {
+    "totalProducts": 12,
+    "totalStockValue": 15750000,
+    "lowStockItems": 3,
+    "outOfStockItems": 1,
+    "totalSuppliers": 8,
+    "activeSuppliers": 7,
+    "warehouseCount": 4,
+    "warehouseUtilization": 68.2,
+    "monthlyStockMovements": 45,
+    "topSellingCategory": "Hardware",
+    "averageInventoryTurnover": 6.8,
+    "stockAccuracy": 96.8
+  },
   "products": [
     {
       "id": "prod_101",
