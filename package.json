@@ -11,7 +11,7 @@
     "dev": "./setup.sh --start",
     "setup": "./setup.sh",
     "start": "concurrently \"npm run start:host\" \"npm run start:crm\" \"npm run start:inventory\" \"npm run start:hr\" \"npm run start:finance\"",
-    "start:host": "(cd host && npm run dev)",
+    "start:host": "(cd host && npm run preview)",
     "start:crm": "(cd apps/crm-module && npm run preview)",
     "start:inventory": "(cd apps/inventory-module && npm run preview)",
     "start:hr": "(cd apps/hr-module && npm run preview)",

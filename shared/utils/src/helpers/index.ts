@@ -59,7 +59,7 @@ export const throttle = <T extends (...args: any[]) => any>(
 };
 
 export const generateId = (): string => {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  return Math.random().toString(36).substring(2, 15);
 };
 
 export const classNames = (...classes: (string | undefined | null | false)[]): string => {

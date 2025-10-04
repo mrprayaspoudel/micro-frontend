@@ -986,7 +986,7 @@ Wrapped all micro frontend apps with SafeWrapper:
 ```
 
 #### 3. Improved Hook Safety
-Enhanced `useUserMenus` hook with delayed initialization:
+Enhanced `useModuleMenus` hook with delayed initialization:
 
 ```typescript
 useEffect(() => {
@@ -1139,10 +1139,8 @@ The platform includes a sophisticated role-based menu system that dynamically fi
 - **`backends/module-menus.json`**: Defines hierarchical menu structure for each module with role requirements
 
 ### 2. Core Components
-- **`MenuAccessControl`**: Utility class for role-based access control with 5-level hierarchy
-- **`MenuApiService`**: Service for fetching and filtering menus based on user permissions
-- **`useUserMenus`**: React hook for menu management and state
-- **`MenuBar`**: Reusable component with dropdown functionality and role-based filtering
+- **`useModuleMenus`**: React hook for simplified module-specific menu management
+- **`MenuBar`**: Reusable component with dropdown functionality (app-specific, no role filtering)
 
 ### 3. Module Integration
 All modules (CRM, Inventory, HR, Finance) now include:
@@ -1410,10 +1408,9 @@ case '/modules':
 ```
 
 ### Menu System Integration
-The MenuBar system already used the consolidated files:
-- `MenuApiService.ts` → `user-permissions.json` & `module-menus.json`
-- `MenuAccessControl.ts` → `user-permissions.json` for role validation
-- `useMenus.ts` hook → Both consolidated files for menu management
+The simplified MenuBar system now uses:
+- `useModuleMenus.ts` hook → `module-menus.json` for direct menu loading (no role filtering)
+- Removed dependency on `user-permissions.json` for simplified app-specific menus
 
 ## Final Backend Structure
 

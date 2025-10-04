@@ -197,7 +197,7 @@ const Preferences: React.FC<PreferencesProps> = ({ user, onClose }) => {
         const parsed = JSON.parse(savedPreferences);
         setPreferences(prev => ({ ...prev, ...parsed }));
       } catch (error) {
-        console.error('Failed to parse saved preferences:', error);
+        // Failed to parse saved preferences, using defaults
       }
     }
   }, []);
@@ -240,7 +240,7 @@ const Preferences: React.FC<PreferencesProps> = ({ user, onClose }) => {
         onClose();
       }, 1500);
     } catch (error) {
-      console.error('Failed to save preferences:', error);
+      // Failed to save preferences
     } finally {
       setLoading(false);
     }

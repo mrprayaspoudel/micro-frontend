@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
-import { ThemeProvider, MenuBar, SafeWrapper, StandaloneAuthProvider, useModuleAuth, StandaloneUserSwitcher } from '@shared/ui-components';
+import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
 import { financeTheme } from './theme';
 import Accounts from './pages/Accounts';
 import Invoices from './pages/Invoices';
@@ -17,19 +17,15 @@ const FinanceApp: React.FC<FinanceAppProps> = ({ basename }) => {
   
   const AppContent = () => {
     const location = useLocation();
-    const { user } = useModuleAuth();
     
     return (
       <SafeWrapper fallback={<div>Loading Finance...</div>}>
         <ThemeProvider moduleTheme={financeTheme}>
         <div className="finance-app">
-          {user && (
-            <MenuBar 
-              userEmail={user.email} 
-              moduleId="finance" 
-              currentPath={location.pathname}
-            />
-          )}
+          <MenuBar 
+            moduleId="finance" 
+            currentPath={location.pathname}
+          />
           <Routes>
             <Route index element={<Dashboard />} />
             <Route path="accounts" element={<Accounts />} />
@@ -45,12 +41,9 @@ const FinanceApp: React.FC<FinanceAppProps> = ({ basename }) => {
   // Use BrowserRouter with /finance basename when running standalone
   if (isStandalone) {
     return (
-      <StandaloneAuthProvider>
-        <StandaloneUserSwitcher />
-        <BrowserRouter basename="/finance">
-          <AppContent />
-        </BrowserRouter>
-      </StandaloneAuthProvider>
+      <BrowserRouter basename="/finance">
+        <AppContent />
+      </BrowserRouter>
     );
   }
 

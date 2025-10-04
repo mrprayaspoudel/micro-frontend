@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
-import { ThemeProvider, MenuBar, SafeWrapper, StandaloneAuthProvider, useModuleAuth, StandaloneUserSwitcher } from '@shared/ui-components';
+import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
 import { hrTheme } from './theme';
 import EmployeeList from './pages/EmployeeList';
 import Attendance from './pages/Attendance';
@@ -17,19 +17,15 @@ const HRApp: React.FC<HRAppProps> = ({ basename }) => {
   
   const AppContent = () => {
     const location = useLocation();
-    const { user } = useModuleAuth();
     
     return (
       <SafeWrapper fallback={<div>Loading HR...</div>}>
         <ThemeProvider moduleTheme={hrTheme}>
         <div className="hr-app">
-          {user && (
-            <MenuBar 
-              userEmail={user.email} 
-              moduleId="hr" 
-              currentPath={location.pathname}
-            />
-          )}
+          <MenuBar 
+            moduleId="hr" 
+            currentPath={location.pathname}
+          />
           <Routes>
             <Route index element={<Dashboard />} />
             <Route path="employees" element={<EmployeeList />} />
@@ -45,12 +41,9 @@ const HRApp: React.FC<HRAppProps> = ({ basename }) => {
   // Use BrowserRouter with /hr basename when running standalone
   if (isStandalone) {
     return (
-      <StandaloneAuthProvider>
-        <StandaloneUserSwitcher />
-        <BrowserRouter basename="/hr">
-          <AppContent />
-        </BrowserRouter>
-      </StandaloneAuthProvider>
+      <BrowserRouter basename="/hr">
+        <AppContent />
+      </BrowserRouter>
     );
   }
 

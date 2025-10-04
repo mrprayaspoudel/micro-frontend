@@ -112,7 +112,7 @@ const CompanyProfile: React.FC = () => {
         setSelectedCompany(foundCompany);
         setLoading(false);
       } catch (error) {
-        console.error('Failed to load company:', error);
+        // Failed to load company
         setLoading(false);
       }
     };

@@ -99,7 +99,7 @@ const ModuleMenu: React.FC<ModuleMenuProps> = ({ moduleId }) => {
           setMenus(moduleData.menus);
         }
       } catch (error) {
-        console.error('Failed to load module menus:', error);
+        // Failed to load module menus
       }
     };
 
@@ -113,7 +113,7 @@ const ModuleMenu: React.FC<ModuleMenuProps> = ({ moduleId }) => {
       setOpenDropdown(openDropdown === menuItem.id ? null : menuItem.id);
     } else {
       // Navigate to the menu item path
-      console.log('Navigate to:', menuItem.path);
+
     }
   };
 
@@ -143,7 +143,7 @@ const ModuleMenu: React.FC<ModuleMenuProps> = ({ moduleId }) => {
                     href={child.path}
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log('Navigate to:', child.path);
+
                       setOpenDropdown(null);
                     }}
                   >

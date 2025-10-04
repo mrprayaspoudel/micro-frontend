@@ -25,31 +25,42 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   moduleTheme 
 }) => {
   // Deep merge module theme with global theme, giving priority to module theme
+  // Ensure we always have a complete theme by falling back to default theme
+  const baseTheme = theme || defaultTheme;
+  
   const mergedTheme = moduleTheme 
     ? {
-        ...theme,
+        ...baseTheme,
         ...moduleTheme,
         colors: {
-          ...theme.colors,
+          ...baseTheme.colors,
           ...moduleTheme.colors,
-          // Deep merge color objects
-          primary: { ...theme.colors.primary, ...moduleTheme.colors?.primary },
-          secondary: { ...theme.colors.secondary, ...moduleTheme.colors?.secondary },
-          gray: { ...theme.colors.gray, ...moduleTheme.colors?.gray },
-          background: { ...theme.colors.background, ...moduleTheme.colors?.background },
-          text: { ...theme.colors.text, ...moduleTheme.colors?.text },
+          // Deep merge color objects with proper fallbacks
+          primary: { ...baseTheme.colors.primary, ...(moduleTheme.colors?.primary || {}) },
+          secondary: { ...baseTheme.colors.secondary, ...(moduleTheme.colors?.secondary || {}) },
+          gray: { ...baseTheme.colors.gray, ...(moduleTheme.colors?.gray || {}) },
+          background: { ...baseTheme.colors.background, ...(moduleTheme.colors?.background || {}) },
+          text: { ...baseTheme.colors.text, ...(moduleTheme.colors?.text || {}) },
+          // Ensure all color properties are preserved
+          success: moduleTheme.colors?.success || baseTheme.colors.success,
+          warning: moduleTheme.colors?.warning || baseTheme.colors.warning,
+          error: moduleTheme.colors?.error || baseTheme.colors.error,
+          info: moduleTheme.colors?.info || baseTheme.colors.info,
         }
       }
-    : theme;
+    : baseTheme;
 
   const setTheme = (newTheme: Theme) => {
     // Implementation for dynamic theme switching
-    console.log('Setting theme:', newTheme);
+
   };
 
+  // Ensure we always provide a valid theme to styled-components
+  const styledTheme = mergedTheme || defaultTheme;
+
   return (
-    <ThemeContext.Provider value={{ theme: mergedTheme, setTheme }}>
-      <StyledThemeProvider theme={mergedTheme}>
+    <ThemeContext.Provider value={{ theme: styledTheme, setTheme }}>
+      <StyledThemeProvider theme={styledTheme}>
         {children}
       </StyledThemeProvider>
     </ThemeContext.Provider>

@@ -146,29 +146,13 @@ export class ModuleHealthChecker {
     return match ? match[1] : 'unknown';
   }
 
-  // Development helper to show status in console
+  // Development helper to show status
   static async showDevelopmentStatus(): Promise<void> {
-    console.log('🔍 Checking micro frontend health...');
-    
     const healthStatuses = await this.checkAllModulesHealth();
-    const healthyModules = healthStatuses.filter(h => h.isHealthy);
     const unhealthyModules = healthStatuses.filter(h => !h.isHealthy);
 
-    console.log(`✅ Healthy modules (${healthyModules.length}):`);
-    healthyModules.forEach(h => {
-      console.log(`   ${h.name}: ${h.url} (${h.latency}ms)`);
-    });
-
     if (unhealthyModules.length > 0) {
-      console.log(`❌ Unhealthy modules (${unhealthyModules.length}):`);
-      unhealthyModules.forEach(h => {
-        console.log(`   ${h.name}: ${h.error}`);
-      });
-
-      console.log('');
-      this.getSetupInstructions(unhealthyModules).forEach(instruction => {
-        console.log(instruction);
-      });
+      this.getSetupInstructions(unhealthyModules);
     }
   }
 }

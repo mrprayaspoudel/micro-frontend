@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom';
-import { ThemeProvider, MenuBar, SafeWrapper, StandaloneAuthProvider, useModuleAuth, StandaloneUserSwitcher } from '@shared/ui-components';
+import { ThemeProvider, MenuBar, SafeWrapper } from '@shared/ui-components';
 import { inventoryTheme } from './theme';
 import ProductList from './pages/ProductList';
 import StockManagement from './pages/StockManagement';
@@ -17,19 +17,15 @@ const InventoryApp: React.FC<InventoryAppProps> = ({ basename }) => {
   
   const AppContent = () => {
     const location = useLocation();
-    const { user } = useModuleAuth();
     
     return (
       <SafeWrapper fallback={<div>Loading Inventory...</div>}>
         <ThemeProvider moduleTheme={inventoryTheme}>
         <div className="inventory-app">
-          {user && (
-            <MenuBar 
-              userEmail={user.email} 
-              moduleId="inventory" 
-              currentPath={location.pathname}
-            />
-          )}
+          <MenuBar 
+            moduleId="inventory" 
+            currentPath={location.pathname}
+          />
           <Routes>
             <Route index element={<Dashboard />} />
             <Route path="products" element={<ProductList />} />
@@ -45,12 +41,9 @@ const InventoryApp: React.FC<InventoryAppProps> = ({ basename }) => {
   // Use BrowserRouter with /inventory basename when running standalone
   if (isStandalone) {
     return (
-      <StandaloneAuthProvider>
-        <StandaloneUserSwitcher />
-        <BrowserRouter basename="/inventory">
-          <AppContent />
-        </BrowserRouter>
-      </StandaloneAuthProvider>
+      <BrowserRouter basename="/inventory">
+        <AppContent />
+      </BrowserRouter>
     );
   }
 

@@ -151,7 +151,7 @@ export const useAuthStore = create<AuthState & AuthActions>()(
             state.isLoading = false;
           });
         } catch (error) {
-          console.error('Failed to parse stored auth data:', error);
+          // Failed to parse stored auth data, use defaults
           // Clear invalid data
           localStorage.removeItem('auth_token');
           localStorage.removeItem('user');

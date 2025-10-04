@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useUserMenus, useModuleNavigate } from '@shared/utils';
+import { useModuleMenus, useModuleNavigate } from '@shared/utils';
 import type { MenuItem } from '@shared/utils';
 
 interface MenuBarProps {
-  userEmail: string;
   moduleId: string;
   currentPath?: string;
 }
@@ -114,26 +113,13 @@ const DropdownItem = styled.button<{ $isActive?: boolean }>`
   }
 `;
 
-const UserRoleBadge = styled.div`
-  display: inline-flex;
-  align-items: center;
-  padding: ${props => props.theme.spacing.xs} ${props => props.theme.spacing.sm};
-  background: ${props => props.theme.colors.primary[100]};
-  color: ${props => props.theme.colors.primary[800]};
-  border-radius: ${props => props.theme.borderRadius.full};
-  font-size: ${props => props.theme.typography.fontSize.xs};
-  font-weight: ${props => props.theme.typography.fontWeight.semibold};
-  margin-left: auto;
-  margin-right: ${props => props.theme.spacing.lg};
-  text-transform: capitalize;
-`;
+
 
 const MenuBarComponent: React.FC<MenuBarProps> = ({ 
-  userEmail, 
   moduleId, 
   currentPath = '/' 
 }) => {
-  const { menus, userRole, loading, error, hasAccess } = useUserMenus(userEmail, moduleId);
+  const { menus, loading, error } = useModuleMenus(moduleId);
   const [openDropdowns, setOpenDropdowns] = useState<Set<string>>(new Set());
   const moduleNavigate = useModuleNavigate();
 
@@ -182,11 +168,11 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
     );
   }
 
-  if (error || !hasAccess) {
+  if (error) {
     return (
       <MenuBarContainer>
         <MenuList>
-          <li>{error || 'Access denied'}</li>
+          <li>{error}</li>
         </MenuList>
       </MenuBarContainer>
     );
@@ -195,7 +181,7 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
   return (
     <MenuBarContainer>
       <MenuList>
-        {menus.map((menu) => (
+        {menus.map((menu: MenuItem) => (
           <MenuItemContainer key={menu.id}>
             <MenuButton
               $isActive={isMenuActive(menu)}
@@ -214,7 +200,7 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
             
             {menu.children && menu.children.length > 0 && (
               <DropdownContainer $isOpen={openDropdowns.has(menu.id)}>
-                {menu.children.map((child) => (
+                {menu.children.map((child: MenuItem) => (
                   <DropdownItem
                     key={child.id}
                     $isActive={child.path === currentPath}
@@ -227,12 +213,6 @@ const MenuBarComponent: React.FC<MenuBarProps> = ({
             )}
           </MenuItemContainer>
         ))}
-        
-        {userRole && (
-          <UserRoleBadge>
-            {userRole}
-          </UserRoleBadge>
-        )}
       </MenuList>
     </MenuBarContainer>
   );

@@ -54,7 +54,8 @@ export class MockApiService {
       case '/companies':
         return import('../../../../backends/companies.json').then(module => module.default) as Promise<T>;
       case '/users':
-        return import('../../../../backends/user-permissions.json').then(module => module.default) as Promise<T>;
+        // Return empty users array since we removed the user permissions system
+        return Promise.resolve([]) as Promise<T>;
       case '/modules':
         return import('../../../../backends/module-menus.json').then(module => module.default) as Promise<T>;
       case '/notifications':
@@ -68,19 +69,16 @@ export class MockApiService {
 
   static async post<T>(endpoint: string, data: any): Promise<T> {
     await this.delay();
-    console.log(`Mock POST to ${endpoint}:`, data);
     return { success: true, data } as T;
   }
 
   static async put<T>(endpoint: string, data: any): Promise<T> {
     await this.delay();
-    console.log(`Mock PUT to ${endpoint}:`, data);
     return { success: true, data } as T;
   }
 
   static async delete<T>(endpoint: string): Promise<T> {
     await this.delay();
-    console.log(`Mock DELETE to ${endpoint}`);
     return { success: true } as T;
   }
 }

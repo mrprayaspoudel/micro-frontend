@@ -52,22 +52,33 @@ const PanelTitle = styled.h2`
 `;
 
 const CloseButton = styled.button`
+  position: absolute;
+  top: ${props => props.theme.spacing.md};
+  right: ${props => props.theme.spacing.md};
   background: none;
   border: none;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: ${props => props.theme.colors.text.secondary};
-  padding: ${props => props.theme.spacing.sm};
-  border-radius: ${props => props.theme.borderRadius.md};
+  color: ${props => props.theme.colors.gray[500]};
+  padding: ${props => props.theme.spacing.xs};
+  border-radius: ${props => props.theme.borderRadius.sm};
   transition: background-color 0.2s ease;
 
   &:hover {
     background-color: ${props => props.theme.colors.gray[100]};
   }
+`;
 
-  svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
+const ModuleStatus = styled.div`
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.25rem;
+`;
+
+const StatusLabel = styled.div`
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: #666;
 `;
 
 const PanelContent = styled.div`
@@ -250,7 +261,7 @@ const EnhancedModulePanel: React.FC<EnhancedModulePanelProps> = ({
         moduleId={activeModule || ''}
         fallback={<LoadingSpinner />}
         onError={(error) => {
-          console.warn(`Dynamic loading failed for ${activeModule}, using static fallback:`, error);
+          // Dynamic loading failed, using static fallback
           // Could implement fallback to static here
           setModuleError(error);
         }}
@@ -267,18 +278,18 @@ const EnhancedModulePanel: React.FC<EnhancedModulePanelProps> = ({
             <PanelTitle>
               {activeModule ? `${activeModule.toUpperCase()} Module` : 'Module Panel'}
             </PanelTitle>
-            {selectedCompany && (
-              <div style={{ fontSize: '0.875rem', color: '#666', marginTop: '0.25rem' }}>
-                {selectedCompany.name}
-              </div>
+            {selectedCompany && activeModule && (
+              <ModuleStatus>
+                Module: {activeModule}
+              </ModuleStatus>
             )}
           </div>
           
           {/* Loading Mode Selector for demonstration */}
           <div>
-            <div style={{ fontSize: '0.75rem', marginBottom: '0.5rem', color: '#666' }}>
-              Loading Mode:
-            </div>
+                        <StatusLabel>
+              Status:
+            </StatusLabel>
             <LoadingModeSelector>
               <ModeButton 
                 $active={loadingMode === 'static'}
