@@ -23,7 +23,7 @@ const InventoryApp = ({ basename }: InventoryAppProps) => {
   // Check if we're running as a standalone app or as a micro frontend
   const currentPort = window.location.port;
   const currentHost = window.location.hostname;
-  const isStandalone = currentPort === '3004';
+  const isStandalone = currentPort === '3002';
   
   const AppContent = () => {
     const location = useLocation();
@@ -56,7 +56,6 @@ const InventoryApp = ({ basename }: InventoryAppProps) => {
       </BrowserRouter>
     );
   }
-
   // When embedded in host, just return content (host router handles navigation)
   return <AppContent />;
 };
