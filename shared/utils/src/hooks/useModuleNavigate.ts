@@ -19,7 +19,8 @@ export const useModuleNavigate = () => {
   const isEmbedded = location.pathname.startsWith('/crm') || 
                     location.pathname.startsWith('/inventory') ||
                     location.pathname.startsWith('/hr') ||
-                    location.pathname.startsWith('/finance');
+                    location.pathname.startsWith('/finance') ||
+                    location.pathname.startsWith('/task');
   
   // Get the module prefix from current path
   const getModulePrefix = () => {

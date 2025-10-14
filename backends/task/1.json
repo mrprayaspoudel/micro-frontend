@@ -1,0 +1,244 @@
+{
+  "stages": [
+    {
+      "id": "stage-1",
+      "name": "TODO",
+      "order": 0,
+      "color": "#1976d2",
+      "description": "Tasks that need to be done",
+      "companyId": "1",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-2",
+      "name": "In Progress",
+      "order": 1,
+      "color": "#9c27b0",
+      "description": "Tasks currently being worked on",
+      "companyId": "1",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-3",
+      "name": "Review",
+      "order": 2,
+      "color": "#ed6c02",
+      "description": "Tasks pending review",
+      "companyId": "1",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-4",
+      "name": "Done",
+      "order": 3,
+      "color": "#2e7d32",
+      "description": "Completed tasks",
+      "companyId": "1",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "ticket-1",
+      "title": "Implement user authentication",
+      "description": "Create a secure authentication system with JWT tokens and refresh token mechanism",
+      "priority": "high",
+      "status": "not-assigned",
+      "stageId": null,
+      "createdBy": "admin-1",
+      "assignedTo": null,
+      "pickedBy": null,
+      "createdAt": "2025-10-12T09:00:00.000Z",
+      "updatedAt": "2025-10-12T09:00:00.000Z",
+      "dueDate": "2025-10-20T00:00:00.000Z",
+      "tags": ["backend", "security", "authentication"],
+      "estimatedHours": 16,
+      "companyId": "1"
+    },
+    {
+      "id": "ticket-2",
+      "title": "Design dashboard UI",
+      "description": "Create wireframes and mockups for the main dashboard interface",
+      "priority": "medium",
+      "status": "assigned",
+      "stageId": "stage-1",
+      "createdBy": "manager-1",
+      "assignedTo": "user-1",
+      "pickedBy": null,
+      "createdAt": "2025-10-11T10:30:00.000Z",
+      "updatedAt": "2025-10-13T14:20:00.000Z",
+      "dueDate": "2025-10-18T00:00:00.000Z",
+      "tags": ["frontend", "design", "UI/UX"],
+      "estimatedHours": 8,
+      "companyId": "1"
+    },
+    {
+      "id": "ticket-3",
+      "title": "Fix payment gateway integration",
+      "description": "Resolve issues with Stripe payment processing for recurring subscriptions",
+      "priority": "urgent",
+      "status": "picked",
+      "stageId": "stage-2",
+      "createdBy": "admin-1",
+      "assignedTo": "user-2",
+      "pickedBy": "user-2",
+      "createdAt": "2025-10-13T08:00:00.000Z",
+      "updatedAt": "2025-10-14T09:15:00.000Z",
+      "dueDate": "2025-10-15T00:00:00.000Z",
+      "tags": ["backend", "payments", "critical"],
+      "estimatedHours": 4,
+      "actualHours": 2,
+      "companyId": "1"
+    },
+    {
+      "id": "ticket-4",
+      "title": "Write API documentation",
+      "description": "Document all REST API endpoints with examples and response formats",
+      "priority": "low",
+      "status": "picked",
+      "stageId": "stage-3",
+      "createdBy": "manager-1",
+      "assignedTo": "user-3",
+      "pickedBy": "user-3",
+      "createdAt": "2025-10-10T11:00:00.000Z",
+      "updatedAt": "2025-10-14T10:00:00.000Z",
+      "dueDate": "2025-10-25T00:00:00.000Z",
+      "tags": ["documentation", "API"],
+      "estimatedHours": 12,
+      "actualHours": 10,
+      "companyId": "1"
+    },
+    {
+      "id": "ticket-5",
+      "title": "Optimize database queries",
+      "description": "Improve query performance for user analytics dashboard",
+      "priority": "medium",
+      "status": "not-assigned",
+      "stageId": null,
+      "createdBy": "admin-1",
+      "assignedTo": null,
+      "pickedBy": null,
+      "createdAt": "2025-10-14T07:30:00.000Z",
+      "updatedAt": "2025-10-14T07:30:00.000Z",
+      "dueDate": "2025-10-22T00:00:00.000Z",
+      "tags": ["backend", "database", "performance"],
+      "estimatedHours": 6,
+      "companyId": "1"
+    },
+    {
+      "id": "ticket-6",
+      "title": "Setup CI/CD pipeline",
+      "description": "Configure automated testing and deployment with GitHub Actions",
+      "priority": "high",
+      "status": "assigned",
+      "stageId": "stage-1",
+      "createdBy": "admin-1",
+      "assignedTo": "user-4",
+      "pickedBy": null,
+      "createdAt": "2025-10-13T15:00:00.000Z",
+      "updatedAt": "2025-10-14T08:00:00.000Z",
+      "dueDate": "2025-10-19T00:00:00.000Z",
+      "tags": ["devops", "CI/CD", "automation"],
+      "estimatedHours": 10,
+      "companyId": "1"
+    },
+    {
+      "id": "ticket-7",
+      "title": "Implement real-time notifications",
+      "description": "Add WebSocket support for live notifications across the platform",
+      "priority": "medium",
+      "status": "completed",
+      "stageId": "stage-4",
+      "createdBy": "manager-1",
+      "assignedTo": "user-2",
+      "pickedBy": "user-2",
+      "createdAt": "2025-10-08T09:00:00.000Z",
+      "updatedAt": "2025-10-13T17:00:00.000Z",
+      "dueDate": "2025-10-16T00:00:00.000Z",
+      "tags": ["backend", "websocket", "notifications"],
+      "estimatedHours": 14,
+      "actualHours": 15,
+      "companyId": "1"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "userId": "user-1",
+      "ticketId": "ticket-2",
+      "type": "assigned",
+      "message": "You have been assigned ticket: Design dashboard UI",
+      "read": false,
+      "createdAt": "2025-10-13T14:20:00.000Z"
+    },
+    {
+      "id": "notif-2",
+      "userId": "user-2",
+      "ticketId": "ticket-3",
+      "type": "assigned",
+      "message": "You have been assigned ticket: Fix payment gateway integration",
+      "read": true,
+      "createdAt": "2025-10-14T09:00:00.000Z"
+    },
+    {
+      "id": "notif-3",
+      "userId": "user-4",
+      "ticketId": "ticket-6",
+      "type": "assigned",
+      "message": "You have been assigned ticket: Setup CI/CD pipeline",
+      "read": false,
+      "createdAt": "2025-10-14T08:00:00.000Z"
+    },
+    {
+      "id": "notif-4",
+      "userId": "user-3",
+      "ticketId": "ticket-4",
+      "type": "updated",
+      "message": "Ticket moved to Review stage: Write API documentation",
+      "read": true,
+      "createdAt": "2025-10-14T10:00:00.000Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "admin-1",
+      "name": "Admin User",
+      "email": "admin@company.com",
+      "role": "admin"
+    },
+    {
+      "id": "manager-1",
+      "name": "Manager One",
+      "email": "manager@company.com",
+      "role": "manager"
+    },
+    {
+      "id": "user-1",
+      "name": "John Doe",
+      "email": "john@company.com",
+      "role": "user"
+    },
+    {
+      "id": "user-2",
+      "name": "Jane Smith",
+      "email": "jane@company.com",
+      "role": "user"
+    },
+    {
+      "id": "user-3",
+      "name": "Bob Johnson",
+      "email": "bob@company.com",
+      "role": "user"
+    },
+    {
+      "id": "user-4",
+      "name": "Alice Brown",
+      "email": "alice@company.com",
+      "role": "user"
+    }
+  ]
+}

@@ -19,3 +19,8 @@ declare module 'finance-app/App' {
   const FinanceApp: React.ComponentType;
   export default FinanceApp;
 }
+
+declare module 'task-app/App' {
+  const TaskApp: React.ComponentType;
+  export default TaskApp;
+}

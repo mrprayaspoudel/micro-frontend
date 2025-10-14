@@ -44,6 +44,16 @@ export function initializeModuleRegistry() {
     permissions: ['finance.read', 'finance.write']
   });
 
+  RuntimeModuleLoader.registerModule('task', {
+    name: 'task-app',
+    url: 'http://localhost:3005/assets/remoteEntry.js',
+    scope: 'task_app',
+    module: './App',
+    displayName: 'Task Module',
+    description: 'Jira-style task and ticket management system',
+    permissions: ['task.read', 'task.write']
+  });
+
   // Module registry initialized
 }
 
@@ -71,7 +81,7 @@ export class ModulePreloader {
   }
 
   static async preloadAllModules(): Promise<void> {
-    const modules = ['crm', 'inventory', 'hr', 'finance'];
+    const modules = ['crm', 'inventory', 'hr', 'finance', 'task'];
     const preloadPromises = modules.map(module => this.preloadModule(module));
     
     await Promise.allSettled(preloadPromises);

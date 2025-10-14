@@ -27,6 +27,11 @@ export const AVAILABLE_MODULES: ModuleDefinition[] = [
     id: 'finance', 
     name: 'Finance', 
     description: 'Financial Management' 
+  },
+  { 
+    id: 'task', 
+    name: 'Task', 
+    description: 'Jira-style Task Management System' 
   }
 ];
 

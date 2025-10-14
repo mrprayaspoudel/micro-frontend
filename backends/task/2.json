@@ -1,0 +1,82 @@
+{
+  "stages": [
+    {
+      "id": "stage-1",
+      "name": "Backlog",
+      "order": 0,
+      "color": "#757575",
+      "description": "Future tasks",
+      "companyId": "2",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-2",
+      "name": "To Do",
+      "order": 1,
+      "color": "#1976d2",
+      "description": "Ready to start",
+      "companyId": "2",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-3",
+      "name": "In Development",
+      "order": 2,
+      "color": "#9c27b0",
+      "description": "Active development",
+      "companyId": "2",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-4",
+      "name": "Testing",
+      "order": 3,
+      "color": "#f57c00",
+      "description": "QA testing phase",
+      "companyId": "2",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-5",
+      "name": "Completed",
+      "order": 4,
+      "color": "#2e7d32",
+      "description": "Finished tasks",
+      "companyId": "2",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "ticket-1",
+      "title": "Update mobile app design",
+      "description": "Redesign the mobile application interface for better UX",
+      "priority": "high",
+      "status": "not-assigned",
+      "stageId": null,
+      "createdBy": "admin-2",
+      "assignedTo": null,
+      "pickedBy": null,
+      "createdAt": "2025-10-13T10:00:00.000Z",
+      "updatedAt": "2025-10-13T10:00:00.000Z",
+      "dueDate": "2025-10-28T00:00:00.000Z",
+      "tags": ["mobile", "design"],
+      "estimatedHours": 20,
+      "companyId": "2"
+    }
+  ],
+  "notifications": [],
+  "users": [
+    {
+      "id": "admin-2",
+      "name": "Company 2 Admin",
+      "email": "admin@company2.com",
+      "role": "admin"
+    }
+  ]
+}

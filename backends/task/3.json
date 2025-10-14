@@ -1,0 +1,44 @@
+{
+  "stages": [
+    {
+      "id": "stage-1",
+      "name": "TODO",
+      "order": 0,
+      "color": "#0288d1",
+      "description": "Pending tasks",
+      "companyId": "3",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-2",
+      "name": "In Progress",
+      "order": 1,
+      "color": "#7b1fa2",
+      "description": "Active work",
+      "companyId": "3",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    },
+    {
+      "id": "stage-3",
+      "name": "Done",
+      "order": 2,
+      "color": "#388e3c",
+      "description": "Completed",
+      "companyId": "3",
+      "createdAt": "2025-10-01T10:00:00.000Z",
+      "updatedAt": "2025-10-01T10:00:00.000Z"
+    }
+  ],
+  "tickets": [],
+  "notifications": [],
+  "users": [
+    {
+      "id": "admin-3",
+      "name": "Company 3 Admin",
+      "email": "admin@company3.com",
+      "role": "admin"
+    }
+  ]
+}

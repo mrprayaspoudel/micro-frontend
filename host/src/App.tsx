@@ -95,6 +95,18 @@ function App() {
                   </ProtectedModuleRoute>
                 } 
               />
+              <Route 
+                path="task/*" 
+                element={
+                  <ProtectedModuleRoute moduleId="task">
+                    <RemoteErrorBoundary remoteName="Task">
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <SharedModuleLoader.TaskApp />
+                      </Suspense>
+                    </RemoteErrorBoundary>
+                  </ProtectedModuleRoute>
+                } 
+              />
             </Route>
           </Route>
         </Routes>

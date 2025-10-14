@@ -976,5 +976,87 @@
         ]
       }
     ]
+  },
+  "task": {
+    "moduleId": "task",
+    "moduleName": "Task",
+    "menus": [
+      {
+        "id": "dashboard",
+        "label": "Dashboard",
+        "path": "/",
+        "icon": "HomeIcon",
+        "order": 1
+      },
+      {
+        "id": "create-ticket",
+        "label": "Create Ticket",
+        "path": "/create-ticket",
+        "icon": "PlusCircleIcon",
+        "order": 2
+      },
+      {
+        "id": "my-work",
+        "label": "My Work",
+        "icon": "UserIcon",
+        "order": 3,
+        "children": [
+          {
+            "id": "ticket-queue",
+            "label": "Ticket Queue",
+            "path": "/ticket-queue",
+            "order": 1
+          },
+          {
+            "id": "my-tickets",
+            "label": "My Active Tickets",
+            "path": "/my-tickets",
+            "order": 2
+          }
+        ]
+      },
+      {
+        "id": "management",
+        "label": "Management",
+        "icon": "BriefcaseIcon",
+        "order": 4,
+        "roles": ["manager", "admin"],
+        "children": [
+          {
+            "id": "ticket-pool",
+            "label": "Unassigned Pool",
+            "path": "/ticket-pool",
+            "order": 1
+          },
+          {
+            "id": "assign-tickets",
+            "label": "Assign Tickets",
+            "path": "/assign-tickets",
+            "order": 2
+          },
+          {
+            "id": "all-tickets",
+            "label": "All Tickets",
+            "path": "/all-tickets",
+            "order": 3
+          }
+        ]
+      },
+      {
+        "id": "administration",
+        "label": "Administration",
+        "icon": "CogIcon",
+        "order": 5,
+        "roles": ["admin"],
+        "children": [
+          {
+            "id": "stage-management",
+            "label": "Stage Management",
+            "path": "/stage-management",
+            "order": 1
+          }
+        ]
+      }
+    ]
   }
 }

@@ -56,7 +56,7 @@ if [ "$START_SERVERS" = true ]; then
     }
 
     echo "🧹 Clearing ports for development servers..."
-    for port in 3000 3001 3002 3003 3004; do
+    for port in 3000 3001 3002 3003 3004 3005; do
         clear_port $port
     done
 
@@ -67,6 +67,7 @@ if [ "$START_SERVERS" = true ]; then
     echo "   Inventory Module: http://localhost:3002"
     echo "   HR Module: http://localhost:3003"
     echo "   Finance Module: http://localhost:3004"
+    echo "   Task Module: http://localhost:3005"
     echo ""
     echo "💡 Tip: All modules must be running for the host to work properly!"
     echo "🛑 Press Ctrl+C to stop all servers"
@@ -86,5 +87,6 @@ else
     echo "   - Inventory Module: http://localhost:3002"
     echo "   - HR Module: http://localhost:3003"
     echo "   - Finance Module: http://localhost:3004"
+    echo "   - Task Module: http://localhost:3005"
     echo ""
 fi
